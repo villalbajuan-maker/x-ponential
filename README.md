@@ -1,4 +1,4 @@
-# X-ponential
+# x-ponential
 
 ## Por que existimos
 
