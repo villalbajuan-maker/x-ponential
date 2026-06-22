@@ -15,6 +15,7 @@ Este tablero permite arrancar antes de tener GitHub Projects configurado.
 - [ ] Revisar [PRINCIPIOS.md](PRINCIPIOS.md) y marcar principios aceptados, cuestionados o faltantes.
 - [ ] Revisar [EQUIPO.md](EQUIPO.md) para corregir perfiles y responsabilidades.
 - [ ] Revisar [CRITERIOS-DE-OPORTUNIDAD.md](CRITERIOS-DE-OPORTUNIDAD.md) antes de proponer iniciativas.
+- [ ] Revisar [semillas iniciales de oportunidad](propuestas/2026-06-22-conversacion-inicial-oportunidades.md).
 
 ## En discusion
 
@@ -39,4 +40,3 @@ Este tablero permite arrancar antes de tener GitHub Projects configurado.
 ## Cerrado
 
 - [ ] Crear estructura fundacional inicial del repositorio.
-

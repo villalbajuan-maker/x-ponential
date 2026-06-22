@@ -27,6 +27,18 @@ Explica por que esta propuesta merece atencion ahora.
 - Capital:
 - Impacto:
 
+## Estado actual y evidencia
+
+Que existe hoy que demuestre avance? Puede incluir repo, demo, landing, cliente, propuesta comercial, prototipo, docs, pruebas o aprendizajes.
+
+## Materiales existentes
+
+- Landing:
+- Repo:
+- Perfil social:
+- Brochure, catalogo o deck:
+- Otros:
+
 ## Usuario, cliente o beneficiario
 
 Define para quien crea valor.
@@ -65,3 +77,7 @@ Hay algun principio no negociable que pueda verse afectado?
 ## Decisiones requeridas
 
 Que necesita decidir el equipo para mover esta propuesta?
+
+## Decision que busca habilitar
+
+Que decision concreta deberia poder tomar el equipo despues de revisar esta propuesta?
