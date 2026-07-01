@@ -1,0 +1,3055 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OCR Licitaciones MVP</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #18202b;
+      --muted: #5d6b7b;
+      --line: #dde4ee;
+      --accent: #1d4ed8;
+      --success: #0f766e;
+      --warning: #b45309;
+      --shadow: 0 10px 30px rgba(24, 32, 43, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(29, 78, 216, 0.12), transparent 35%),
+        radial-gradient(circle at top right, rgba(15, 118, 110, 0.08), transparent 25%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    .wrap {
+      width: min(1100px, calc(100% - 32px));
+      margin: 32px auto 48px;
+    }
+
+    .hero,
+    .card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(221, 228, 238, 0.8);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .hero {
+      padding: 28px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 72ch;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .card {
+      padding: 20px;
+      grid-column: span 6;
+    }
+
+    .card.full {
+      grid-column: span 12;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .section-note {
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .status-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .pill strong {
+      color: var(--text);
+    }
+
+    .pill.ok {
+      background: #ecfdf5;
+      border-color: #bbf7d0;
+      color: var(--success);
+    }
+
+    .pill.warn {
+      background: #fff7ed;
+      border-color: #fed7aa;
+      color: var(--warning);
+    }
+
+    button {
+      appearance: none;
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), #2563eb);
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(29, 78, 216, 0.22);
+    }
+
+    button:hover {
+      filter: brightness(1.03);
+    }
+
+    button.secondary-btn,
+    .btnlink.secondary-btn {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    button.secondary-btn:hover,
+    .btnlink.secondary-btn:hover {
+      filter: none;
+      border-color: var(--accent);
+    }
+
+    .btnlink {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .secop-document-groups {
+      display: grid;
+      gap: 16px;
+      margin: 14px 0 16px;
+    }
+
+    .secop-results-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .secop-family-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 2px;
+    }
+
+    .secop-family-summary-card {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid rgba(29, 78, 216, 0.18);
+      border-radius: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.04);
+    }
+
+    .secop-family-summary-card.is-empty {
+      border-style: dashed;
+      background: #fcfdff;
+    }
+
+    .secop-family-summary-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .secop-family-summary-title {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .secop-family-summary-title strong {
+      font-size: 17px;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .secop-family-summary-title span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .secop-family-summary-badge {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .secop-family-summary-empty {
+      display: grid;
+      gap: 10px;
+      min-height: 180px;
+      align-content: start;
+    }
+
+    .secop-family-summary-empty .missing-company-placeholder {
+      margin-top: 4px;
+    }
+
+    .secop-results-column {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .secop-result-block {
+      display: grid;
+      gap: 10px;
+    }
+
+    .secop-toggle {
+      display: grid;
+      gap: 10px;
+    }
+
+    .secop-toggle > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .secop-toggle > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .secop-toggle > summary::after {
+      content: "";
+      width: 9px;
+      height: 9px;
+      flex: 0 0 auto;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+      transition: transform 0.18s ease;
+      margin-left: auto;
+    }
+
+    .secop-toggle[open] > summary::after {
+      transform: rotate(-135deg);
+    }
+
+    .secop-toggle-body {
+      display: grid;
+      gap: 10px;
+      padding-top: 2px;
+    }
+
+    .secop-result-block .section-note {
+      margin: 0;
+    }
+
+    .secop-result-block .review-summary,
+    .secop-result-block .missing-company-fields {
+      margin: 0;
+    }
+
+    .secop-toggle-body pre {
+      margin: 0;
+    }
+
+    .secop-source-group {
+      display: grid;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid rgba(29, 78, 216, 0.18);
+      border-radius: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.04);
+    }
+
+    .secop-source-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .secop-source-title {
+      display: grid;
+      gap: 4px;
+    }
+
+    .secop-source-title strong {
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .secop-source-title span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .secop-source-badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .secop-dataset-group {
+      display: grid;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .secop-dataset-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 4px;
+    }
+
+    .secop-dataset-title {
+      display: grid;
+      gap: 4px;
+    }
+
+    .secop-dataset-title strong {
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .secop-dataset-title span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .secop-dataset-count {
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .secop-dataset-source {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .secop-document-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .secop-document-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .secop-document-main {
+      display: grid;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .secop-document-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .secop-document-head strong {
+      font-size: 15px;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    .secop-document-pill {
+      flex: 0 0 auto;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .secop-document-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .secop-document-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: #f8fafc;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+    }
+
+    .secop-document-url {
+      max-width: min(100%, 380px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #1d4ed8;
+    }
+
+    .secop-document-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .secop-document-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      min-width: 170px;
+    }
+
+    .secop-documents {
+      display: grid;
+      gap: 16px;
+      margin: 14px 0 16px;
+    }
+
+    .secop-family-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .secop-family-grid.secop-family-grid-single-active {
+      grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+    }
+
+    .secop-family-column {
+      display: grid;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid rgba(29, 78, 216, 0.18);
+      border-radius: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.04);
+    }
+
+    .secop-family-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .secop-family-title {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .secop-family-title strong {
+      font-size: 17px;
+      color: var(--text);
+    }
+
+    .secop-family-title span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .secop-family-badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .secop-family-datasets {
+      display: grid;
+      gap: 12px;
+    }
+
+    .secop-dataset-group {
+      display: grid;
+      gap: 8px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .secop-dataset-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 2px;
+    }
+
+    .secop-dataset-title {
+      display: grid;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .secop-dataset-title strong {
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .secop-dataset-title span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .secop-dataset-count {
+      padding: 6px 10px;
+      border-radius: 12px;
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .secop-dataset-source {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .secop-document-rows {
+      display: grid;
+      gap: 8px;
+    }
+
+    .secop-document-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px 12px;
+      align-items: start;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    .secop-document-row-main {
+      display: grid;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .secop-document-row-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .secop-document-row-head strong {
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.35;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .secop-document-row-title {
+      display: block;
+      min-width: 0;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 1.35;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-decoration: none;
+    }
+
+    .secop-document-row-title:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .secop-document-row-pill {
+      flex: 0 0 auto;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .secop-document-row-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .secop-document-row-line span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-width: 0;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .secop-document-row-line span:nth-child(4) {
+      display: none;
+    }
+
+    .secop-document-row-line strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .secop-document-row-url {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .secop-document-row-url span {
+      flex: 0 0 auto;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .secop-document-row-url a {
+      flex: 1 1 auto;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #1d4ed8;
+    }
+
+    .secop-document-row-actions {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: flex-start;
+      gap: 6px;
+      min-width: 0;
+      max-width: 240px;
+    }
+
+    .secop-document-row-actions .btnlink,
+    .secop-document-row-actions button {
+      width: auto;
+      flex: 0 1 auto;
+      justify-content: center;
+      padding: 7px 9px;
+      font-size: 11px;
+    }
+
+    .secop-debug-block {
+      margin-top: 8px;
+    }
+
+    .secop-debug-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .secop-debug-panel {
+      display: grid;
+      gap: 10px;
+    }
+
+    .secop-debug-panel-head {
+      display: grid;
+      gap: 4px;
+    }
+
+    .secop-debug-panel-head strong {
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .secop-debug-panel-head span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .secop-result-block .review-table-wrap {
+      margin-top: 0;
+    }
+
+    .secop-result-block pre {
+      max-height: 360px;
+    }
+
+    .profile-form,
+    .upload-form {
+      display: grid;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field span {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .field input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 12px 14px;
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    .field input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .review-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      margin: 14px 0 16px;
+    }
+
+    .summary-chip {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      padding: 12px 14px;
+      min-height: 72px;
+    }
+
+    .summary-chip strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .summary-chip span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .review-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      margin-top: 10px;
+    }
+
+    .review-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 0;
+      table-layout: fixed;
+    }
+
+    .review-table th,
+    .review-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .review-table th {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: #f8fafc;
+    }
+
+    .review-table tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .review-table input[type="text"],
+    .review-table select {
+      width: 100%;
+      min-width: 140px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 10px 12px;
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    .review-table input[type="text"]:focus,
+    .review-table select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
+    }
+
+    .review-table td a {
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: top;
+    }
+
+    .review-meta {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .review-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .review-check input {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      accent-color: var(--accent);
+    }
+
+    .review-save-btn {
+      padding: 10px 14px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .missing-company-fields {
+      display: grid;
+      gap: 12px;
+      margin: 14px 0 16px;
+    }
+
+    .missing-company-item {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .missing-company-step {
+      gap: 12px;
+    }
+
+    .missing-company-kicker {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .missing-company-item strong {
+      display: block;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .missing-company-item input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 12px 14px;
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    .missing-company-item input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
+    }
+
+    .missing-company-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .missing-company-arrow {
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      border-radius: 14px;
+      box-shadow: none;
+      background: #fff;
+      color: var(--accent);
+      border: 1px solid var(--line);
+    }
+
+    .missing-company-arrow:hover {
+      filter: none;
+      border-color: rgba(29, 78, 216, 0.34);
+    }
+
+    .missing-company-arrow:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .missing-company-placeholder {
+      border: 1px dashed var(--line);
+      border-radius: 16px;
+      background: #fbfcfe;
+      padding: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    pre {
+      margin: 0;
+      padding: 16px;
+      border-radius: 14px;
+      background: #0f172a;
+      color: #dbeafe;
+      overflow: auto;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px) {
+      .card {
+        grid-column: span 12;
+      }
+
+      .card.full {
+        grid-column: span 12;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wrap {
+        width: min(100% - 20px, 1100px);
+        margin: 20px auto 36px;
+      }
+
+      .secop-document-card {
+        grid-template-columns: 1fr;
+      }
+
+      .secop-document-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        min-width: 0;
+      }
+
+      .secop-document-url {
+        max-width: 100%;
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+
+      .secop-results-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .secop-family-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .secop-family-summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .secop-document-row {
+        grid-template-columns: 1fr;
+      }
+
+      .secop-document-row-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        min-width: 0;
+      }
+
+      .secop-document-row-url a {
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+
+      .secop-debug-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Checkpoint 5</div>
+      <h1>OCR Local para Licitaciones SECOP</h1>
+      <p class="lead">
+        Base canonica del MVP. En esta fase ya esta activo el backend local, la ruta
+        <code>/health</code>, la interfaz servida desde <code>/</code>, el perfil de empresa,
+        la subida de documentos originales y la extraccion inicial de texto.
+      </p>
+
+      <div class="status-row">
+        <div id="health-pill" class="pill warn"><strong>Estado:</strong> comprobando backend...</div>
+        <button id="refresh-btn" type="button">Verificar backend</button>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card full">
+        <h2>Buscador SECOP</h2>
+        <p class="section-note">
+          Pega un enlace, constancia o identificador SECOP I / SECOP II para consultar el
+          script <code>secop.py</code> y listar procesos, metadatos y documentos oficiales.
+          Al abrir el documento oficial, el CAPTCHA se resuelve manualmente en la pagina
+          original. Esta vista no automatiza ni evade ese paso.
+        </p>
+
+        <div class="status-row">
+          <div id="secop-pill" class="pill warn"><strong>SECOP:</strong> esperando consulta</div>
+          <button id="secop-refresh-btn" type="button">Buscar en SECOP</button>
+        </div>
+
+        <form id="secop-form" class="upload-form">
+          <div class="form-grid">
+            <label class="field" style="grid-column: 1 / -1;">
+              <span>Enlace, referencia o constancia</span>
+              <input
+                id="secop-input"
+                name="secop_value"
+                type="text"
+                autocomplete="off"
+                placeholder="https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.REQ.2577563"
+              />
+            </label>
+          </div>
+
+        </form>
+
+        <section class="secop-result-block">
+          <p class="section-note">Resumen de la consulta</p>
+          <div id="secop-summary" class="review-summary"></div>
+        </section>
+
+        <section class="secop-result-block">
+          <p class="section-note">Información del proceso</p>
+          <div id="secop-family-summary" class="secop-family-summary-grid">
+            <article class="secop-family-summary-card is-empty">
+              <div class="secop-family-summary-head">
+                <div class="secop-family-summary-title">
+                  <strong>SECOP I</strong>
+                  <span>Esperando una coincidencia de SECOP I</span>
+                </div>
+                <div class="secop-family-summary-badge">Sin datos</div>
+              </div>
+              <div class="secop-family-summary-empty">
+                <div class="missing-company-placeholder">
+                  Consulta una constancia o un proceso de SECOP I para llenar esta columna.
+                </div>
+              </div>
+            </article>
+            <article class="secop-family-summary-card is-empty">
+              <div class="secop-family-summary-head">
+                <div class="secop-family-summary-title">
+                  <strong>SECOP II</strong>
+                  <span>Esperando una coincidencia de SECOP II</span>
+                </div>
+                <div class="secop-family-summary-badge">Sin datos</div>
+              </div>
+              <div class="secop-family-summary-empty">
+                <div class="missing-company-placeholder">
+                  Consulta un enlace o referencia de SECOP II para llenar esta columna.
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="secop-result-block">
+          <p class="section-note">Documentos oficiales relacionados</p>
+          <div id="secop-documents" class="secop-documents">
+            <div class="missing-company-placeholder">
+              Sin resultados todavia. Consulta un proceso para ver SECOP I y SECOP II en dos columnas.
+            </div>
+          </div>
+        </section>
+
+        <section class="secop-result-block secop-debug-block">
+          <details class="secop-toggle">
+            <summary>Metadatos de los datasets consultados y salida cruda</summary>
+            <div class="secop-toggle-body secop-debug-grid">
+              <article class="secop-debug-panel">
+                <div class="secop-debug-panel-head">
+                  <strong>Metadatos de los datasets consultados</strong>
+                  <span>Fuentes oficiales y fechas de consulta</span>
+                </div>
+                <pre id="secop-metadata-output">Esperando metadatos...</pre>
+              </article>
+              <article class="secop-debug-panel">
+                <div class="secop-debug-panel-head">
+                  <strong>Salida cruda</strong>
+                  <span>Respuesta completa del inspector</span>
+                </div>
+                <pre id="secop-output">Esperando respuesta...</pre>
+              </article>
+            </div>
+          </details>
+        </section>
+      </article>
+
+      <article class="card full">
+        <h2>Perfil de empresa</h2>
+        <p class="section-note">
+          Este formulario guarda la informacion reutilizable de la empresa en
+          <code>company/SEASIM/data.json</code>. Solo se guarda cuando haces clic
+          en <strong>Guardar perfil</strong>.
+        </p>
+
+        <div class="status-row">
+          <div id="company-pill" class="pill warn"><strong>Perfil:</strong> sin cargar</div>
+          <button id="reload-company-btn" type="button">Cargar perfil</button>
+        </div>
+
+        <form id="company-import-form" class="upload-form">
+          <div class="form-grid">
+            <label class="field" style="grid-column: 1 / -1;">
+              <span>Importar perfil JSON</span>
+              <input id="company-json-file" name="file" type="file" accept=".json,application/json" />
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit">Cargar JSON</button>
+          </div>
+        </form>
+
+        <form id="company-form" class="profile-form">
+          <div class="form-grid">
+            <label class="field">
+              <span>Nombre de la empresa</span>
+              <input name="business_name" type="text" autocomplete="organization" />
+            </label>
+            <label class="field">
+              <span>NIT</span>
+              <input name="nit" type="text" autocomplete="off" />
+            </label>
+            <label class="field">
+              <span>Representante legal</span>
+              <input name="legal_representative" type="text" autocomplete="name" />
+            </label>
+            <label class="field">
+              <span>Documento representante</span>
+              <input name="legal_representative_id" type="text" autocomplete="off" />
+            </label>
+            <label class="field">
+              <span>Direccion</span>
+              <input name="address" type="text" autocomplete="street-address" />
+            </label>
+            <label class="field">
+              <span>Ciudad</span>
+              <input name="city" type="text" autocomplete="address-level2" />
+            </label>
+            <label class="field">
+              <span>Telefono</span>
+              <input name="phone" type="tel" autocomplete="tel" />
+            </label>
+            <label class="field">
+              <span>Correo</span>
+              <input name="email" type="email" autocomplete="email" />
+            </label>
+            <label class="field">
+              <span>Banco</span>
+              <input name="bank_name" type="text" autocomplete="off" />
+            </label>
+            <label class="field">
+              <span>Tipo de cuenta</span>
+              <input name="bank_account_type" type="text" autocomplete="off" />
+            </label>
+            <label class="field">
+              <span>Numero de cuenta</span>
+              <input name="bank_account_number" type="text" autocomplete="off" />
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit">Guardar perfil</button>
+          </div>
+        </form>
+
+        <pre id="company-output">Esperando perfil...</pre>
+      </article>
+
+      <article class="card full">
+        <h2>Informacion faltante para completar documentos</h2>
+        <p class="section-note">
+          Cuando ya procesaste un documento y aun falta informacion para completarlo, aqui
+          aparecera una sola pregunta a la vez. Usa las flechas para avanzar o volver.
+        </p>
+
+        <div class="status-row">
+          <div id="missing-company-pill" class="pill warn"><strong>Faltantes:</strong> esperando documento</div>
+        </div>
+
+        <form id="missing-company-form" class="upload-form">
+          <div id="missing-company-fields" class="missing-company-fields">
+            <div class="missing-company-placeholder">
+              Procesa un documento para activar este asistente. Cuando existan datos faltantes,
+              veras una sola pregunta por vez.
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button id="missing-company-prev" type="button" class="missing-company-arrow" aria-label="Pregunta anterior" disabled>←</button>
+            <button type="submit" class="missing-company-arrow" aria-label="Siguiente pregunta">→</button>
+          </div>
+        </form>
+
+        <pre id="missing-company-output">Esperando documento procesado...</pre>
+      </article>
+
+      <article class="card full">
+        <h2>Subida de documento original</h2>
+        <p class="section-note">
+          El archivo se guarda intacto en <code>company/SEASIM/originales/</code> con un
+          identificador unico para que luego pueda procesarse sin tocar el original.
+        </p>
+
+        <div class="status-row">
+          <div id="upload-pill" class="pill warn"><strong>Upload:</strong> esperando archivo</div>
+        </div>
+
+        <form id="upload-form" class="upload-form">
+          <div class="form-grid">
+            <label class="field" style="grid-column: 1 / -1;">
+              <span>Documento</span>
+              <input id="document-file" name="file" type="file" />
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit">Subir documento</button>
+          </div>
+        </form>
+
+        <pre id="upload-output">Esperando archivo...</pre>
+      </article>
+
+      <article class="card full">
+        <h2>Procesar documento</h2>
+        <p class="section-note">
+          Pega o confirma el <code>document_id</code> que devolvio la subida y el backend
+          clasificara el archivo, extraera texto, aplicara OCR si hace falta y generara el JSON
+          de extraccion.
+        </p>
+
+        <div class="status-row">
+          <div id="process-pill" class="pill warn"><strong>Proceso:</strong> esperando documento</div>
+        </div>
+
+        <form id="process-form" class="upload-form">
+          <div class="form-grid">
+            <label class="field" style="grid-column: 1 / -1;">
+              <span>Document ID</span>
+              <input id="process-document-id" name="document_id" type="text" autocomplete="off" />
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit">Procesar documento</button>
+          </div>
+        </form>
+
+        <pre id="process-output">Esperando procesamiento...</pre>
+      </article>
+
+      <article class="card full">
+        <h2>Revision humana</h2>
+        <p class="section-note">
+          Carga un <code>document_id</code> ya procesado para revisar cada hallazgo. Puedes
+          aceptarlo, editarlo o descartarlo. Solo los cambios confirmados se guardan en el
+          JSON de extraccion y, si lo marcas, en el perfil de empresa.
+        </p>
+
+        <div class="status-row">
+          <div id="review-pill" class="pill warn"><strong>Revision:</strong> esperando documento</div>
+        </div>
+
+        <form id="review-form" class="upload-form">
+          <div class="form-grid">
+            <label class="field" style="grid-column: 1 / -1;">
+              <span>Document ID</span>
+              <input id="review-document-id" name="document_id" type="text" autocomplete="off" />
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit">Cargar revision</button>
+          </div>
+        </form>
+
+        <p class="section-note">
+          Antes de guardar cada fila, selecciona <code>aceptado</code>, <code>editado</code> o
+          <code>descartado</code>. El estado <code>pendiente</code> solo indica que el dato aun
+          no fue decidido.
+        </p>
+
+        <div id="review-summary" class="review-summary"></div>
+
+        <div class="review-table-wrap">
+          <table class="review-table">
+            <thead>
+              <tr>
+                <th>Campo</th>
+                <th>Valor</th>
+                <th>Estado</th>
+                <th>Perfil</th>
+                <th>Accion</th>
+              </tr>
+            </thead>
+            <tbody id="review-table-body">
+              <tr>
+                <td colspan="5">Procesa un documento para ver los datos detectados.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <pre id="review-output">Esperando revision...</pre>
+      </article>
+
+      <article class="card">
+        <h2>Que incluye esta fase</h2>
+        <ul>
+          <li>Estructura canonica lista para crecer sin fragmentarse.</li>
+          <li>Backend local con FastAPI.</li>
+          <li>Index HTML servido desde la raiz.</li>
+          <li>Perfil de empresa persistido en JSON.</li>
+          <li>Subida de documentos originales sin modificar.</li>
+          <li>Clasificacion de archivo, extraccion de texto y OCR basico.</li>
+          <li>Revision humana de cada hallazgo detectado.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Respuesta del backend</h2>
+        <pre id="health-output">Esperando respuesta...</pre>
+      </article>
+
+      <article class="card">
+        <h2>Proximos checkpoints</h2>
+        <ul>
+          <li>Plantillas DOCX y XLSX con merge controlado.</li>
+          <li>Auditoria basica del flujo.</li>
+          <li>Conexion completa del flujo en la interfaz.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Regla operativa</h2>
+        <p>
+          Nada se guarda como definitivo sin revision humana. Esta interfaz se ira
+          completando por etapas, validando cada checkpoint antes de avanzar.
+        </p>
+      </article>
+    </section>
+
+    <p class="footer-note">
+      Cuando el backend este arriba, esta pagina muestra el estado de salud, el perfil de
+      empresa, la subida del original y la version activa del MVP.
+    </p>
+  </main>
+
+  <script>
+    // Referencias del DOM usadas por toda la pagina.
+    const healthPill = document.getElementById("health-pill");
+    const healthOutput = document.getElementById("health-output");
+    const refreshBtn = document.getElementById("refresh-btn");
+    const companyPill = document.getElementById("company-pill");
+    const companyOutput = document.getElementById("company-output");
+    const missingCompanyPill = document.getElementById("missing-company-pill");
+    const missingCompanyOutput = document.getElementById("missing-company-output");
+    const missingCompanyForm = document.getElementById("missing-company-form");
+    const missingCompanyFields = document.getElementById("missing-company-fields");
+    const missingCompanyPrevBtn = document.getElementById("missing-company-prev");
+    const companyImportForm = document.getElementById("company-import-form");
+    const companyJsonFileInput = document.getElementById("company-json-file");
+    const companyForm = document.getElementById("company-form");
+    const reloadCompanyBtn = document.getElementById("reload-company-btn");
+    const uploadPill = document.getElementById("upload-pill");
+    const uploadOutput = document.getElementById("upload-output");
+    const uploadForm = document.getElementById("upload-form");
+    const documentFileInput = document.getElementById("document-file");
+    const processPill = document.getElementById("process-pill");
+    const processOutput = document.getElementById("process-output");
+    const processForm = document.getElementById("process-form");
+    const processDocumentIdInput = document.getElementById("process-document-id");
+    const secopApiBase = (window.SECOP_API_BASE || window.location.origin || "").replace(/\/$/, "");
+    const secopPill = document.getElementById("secop-pill");
+    const secopOutput = document.getElementById("secop-output");
+    const secopMetadataOutput = document.getElementById("secop-metadata-output");
+    const secopFamilySummary = document.getElementById("secop-family-summary");
+    const secopDocuments = document.getElementById("secop-documents");
+    const secopSummary = document.getElementById("secop-summary");
+    const secopForm = document.getElementById("secop-form");
+    const secopInput = document.getElementById("secop-input");
+    const secopRefreshBtn = document.getElementById("secop-refresh-btn");
+    const reviewPill = document.getElementById("review-pill");
+    const reviewOutput = document.getElementById("review-output");
+    const reviewForm = document.getElementById("review-form");
+    const reviewDocumentIdInput = document.getElementById("review-document-id");
+    const reviewSummary = document.getElementById("review-summary");
+    const reviewTableBody = document.getElementById("review-table-body");
+
+    // Estado local de los flujos de empresa, documentos, revision y SECOP.
+    let latestDocumentId = "";
+    let documentQuestionsActive = false;
+    let documentQuestionDocumentId = "";
+    let documentQuestionQueue = [];
+    let documentQuestionIndex = 0;
+    let documentQuestionAnswers = {};
+
+    // Campos canonicos del perfil de empresa.
+    const companyFields = [
+      "business_name",
+      "nit",
+      "legal_representative",
+      "legal_representative_id",
+      "address",
+      "city",
+      "phone",
+      "email",
+      "bank_name",
+      "bank_account_type",
+      "bank_account_number",
+    ];
+
+    // Preguntas y etiquetas canonicas para empresa y datos del documento.
+    const companyFieldMeta = {
+      business_name: {
+        label: "Nombre de la empresa",
+        question: "¿Cuál es el nombre legal de la empresa?",
+      },
+      nit: {
+        label: "NIT",
+        question: "¿Cuál es el NIT de la empresa?",
+      },
+      legal_representative: {
+        label: "Representante legal",
+        question: "¿Cuál es el nombre del representante legal?",
+      },
+      legal_representative_id: {
+        label: "Documento representante",
+        question: "¿Cuál es el número de documento del representante legal?",
+      },
+      address: {
+        label: "Direccion",
+        question: "¿Cuál es la dirección de la empresa?",
+      },
+      city: {
+        label: "Ciudad",
+        question: "¿En qué ciudad está registrada la empresa?",
+      },
+      phone: {
+        label: "Telefono",
+        question: "¿Cuál es el teléfono principal de la empresa?",
+      },
+      email: {
+        label: "Correo",
+        question: "¿Cuál es el correo principal de la empresa?",
+      },
+      bank_name: {
+        label: "Banco",
+        question: "¿En qué banco está la cuenta de la empresa?",
+      },
+      bank_account_type: {
+        label: "Tipo de cuenta",
+        question: "¿Cuál es el tipo de cuenta bancaria?",
+      },
+      bank_account_number: {
+        label: "Numero de cuenta",
+        question: "¿Cuál es el número de cuenta bancaria?",
+      },
+    };
+
+    const fieldMeta = {
+      business_name: {
+        label: "Nombre de la empresa",
+        question: "Cual es el nombre legal de la empresa?",
+      },
+      nit: {
+        label: "NIT",
+        question: "Cual es el NIT de la empresa?",
+      },
+      legal_representative: {
+        label: "Representante legal",
+        question: "Cual es el nombre del representante legal?",
+      },
+      legal_representative_id: {
+        label: "Documento representante",
+        question: "Cual es el numero de documento del representante legal?",
+      },
+      address: {
+        label: "Direccion",
+        question: "Cual es la direccion de la empresa?",
+      },
+      city: {
+        label: "Ciudad",
+        question: "En que ciudad esta registrada la empresa?",
+      },
+      phone: {
+        label: "Telefono",
+        question: "Cual es el telefono principal de la empresa?",
+      },
+      email: {
+        label: "Correo",
+        question: "Cual es el correo principal de la empresa?",
+      },
+      bank_name: {
+        label: "Banco",
+        question: "En que banco esta la cuenta de la empresa?",
+      },
+      bank_account_type: {
+        label: "Tipo de cuenta",
+        question: "Cual es el tipo de cuenta bancaria?",
+      },
+      bank_account_number: {
+        label: "Numero de cuenta",
+        question: "Cual es el numero de cuenta bancaria?",
+      },
+      "tender.process_number": {
+        label: "Numero de proceso",
+        question: "Cual es el numero de proceso?",
+      },
+      "tender.entity": {
+        label: "Entidad",
+        question: "Cual es la entidad?",
+      },
+      "tender.offer_value": {
+        label: "Valor de la oferta",
+        question: "Cual es el valor de la oferta?",
+      },
+      "tender.execution_term": {
+        label: "Plazo de ejecucion",
+        question: "Cual es el plazo de ejecucion?",
+      },
+      "tender.date": {
+        label: "Fecha",
+        question: "Cual es la fecha?",
+      },
+    };
+
+    // Helpers de estado visual para los indicadores superiores.
+    function setHealthState(ok, message) {
+      healthPill.className = ok ? "pill ok" : "pill warn";
+      healthPill.innerHTML = `<strong>Estado:</strong> ${message}`;
+    }
+
+    function setCompanyState(ok, message) {
+      companyPill.className = ok ? "pill ok" : "pill warn";
+      companyPill.innerHTML = `<strong>Perfil:</strong> ${message}`;
+    }
+
+    function setUploadState(ok, message) {
+      uploadPill.className = ok ? "pill ok" : "pill warn";
+      uploadPill.innerHTML = `<strong>Upload:</strong> ${message}`;
+    }
+
+    function setProcessState(ok, message) {
+      processPill.className = ok ? "pill ok" : "pill warn";
+      processPill.innerHTML = `<strong>Proceso:</strong> ${message}`;
+    }
+
+    function setReviewState(ok, message) {
+      reviewPill.className = ok ? "pill ok" : "pill warn";
+      reviewPill.innerHTML = `<strong>Revision:</strong> ${message}`;
+    }
+
+    function setMissingCompanyState(ok, message) {
+      missingCompanyPill.className = ok ? "pill ok" : "pill warn";
+      missingCompanyPill.innerHTML = `<strong>Faltantes:</strong> ${message}`;
+    }
+
+    // Escapado seguro para cualquier texto inyectado en el DOM.
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function setSecopState(ok, message) {
+      secopPill.className = ok ? "pill ok" : "pill warn";
+      secopPill.innerHTML = `<strong>SECOP:</strong> ${message}`;
+    }
+
+    // Renderizado del bloque SECOP: resumen, metadatos y documentos.
+    function renderSecopSummary(data) {
+      const parsed = data?.parsed_input || {};
+      const metadata = Array.isArray(data?.metadata) ? data.metadata : [];
+      const processRows = Array.isArray(data?.process_rows) ? data.process_rows : [];
+      const documents = Array.isArray(data?.documents) ? data.documents : [];
+      const documentGroups = Array.isArray(data?.document_groups) ? data.document_groups : [];
+
+      secopSummary.innerHTML = [
+        { label: "Plataforma", value: parsed.platform || "desconocida", note: parsed.input_kind || "entrada" },
+        { label: "Proceso", value: processRows.length, note: "coincidencias" },
+        { label: "Documentos", value: documents.length, note: "archivos oficiales" },
+        { label: "Fuentes", value: documentGroups.length, note: "familias agrupadas" },
+        { label: "Datasets", value: metadata.length, note: "consultados" },
+      ].map((chip) => `
+        <div class="summary-chip">
+          <strong>${escapeHtml(chip.label)}: ${escapeHtml(chip.value)}</strong>
+          <span>${escapeHtml(chip.note)}</span>
+        </div>
+      `).join("");
+    }
+
+    function renderSecopProcessTable(data) {
+      // Tabla simple de respaldo para el resumen del proceso.
+      const summary = data?.process_summary || {};
+      const parsed = data?.parsed_input || {};
+      const rows = [
+        ["Plataforma", parsed.platform || "—"],
+        ["Tipo de entrada", parsed.input_kind || "—"],
+        ["Identificador", parsed.identifier || "—"],
+        ["Proceso", summary.process_id || "—"],
+        ["Referencia", summary.reference || "—"],
+        ["Entidad", summary.entity || "—"],
+        ["Estado", summary.status || "—"],
+        ["Valor", summary.amount || "—"],
+        ["URL oficial", summary.document_url || "—"],
+      ];
+
+      secopProcessTableBody.innerHTML = rows.map(([label, value]) => `
+        <tr>
+          <td><strong>${escapeHtml(label)}</strong></td>
+          <td>${label === "URL oficial" && value !== "—"
+            ? `<a href="${escapeHtml(value)}" target="_blank" rel="noreferrer">${escapeHtml(value)}</a>`
+            : escapeHtml(value)}</td>
+        </tr>
+      `).join("");
+    }
+
+    function renderSecopFamilySummaryCard(summary, documentGroup) {
+      // Tarjeta por familia SECOP, con estado vacio cuando no hay coincidencias.
+      const familyName = summary?.source_family || "Sin fuente";
+      const processCount = Number(summary?.process_count || 0);
+      const groupedDatasets = Array.isArray(documentGroup?.datasets) ? documentGroup.datasets : [];
+      const primaryDataset = groupedDatasets.reduce((best, current) => {
+        if (!best) {
+          return current;
+        }
+        return Number(current?.document_count || 0) > Number(best?.document_count || 0) ? current : best;
+      }, null);
+      const documentsUrl = primaryDataset?.dataset_source_url || "";
+      const hasData = processCount > 0 && (summary?.process_id || summary?.reference || summary?.entity || summary?.document_url);
+
+      if (!hasData) {
+        const emptyMessage = familyName === "SECOP I"
+          ? "Consulta una constancia o un proceso de SECOP I para llenar esta columna."
+          : "Consulta un enlace o referencia de SECOP II para llenar esta columna.";
+        return `
+          <article class="secop-family-summary-card is-empty">
+            <div class="secop-family-summary-head">
+              <div class="secop-family-summary-title">
+                <strong>${escapeHtml(familyName)}</strong>
+                <span>Esperando una coincidencia en esta familia</span>
+              </div>
+              <div class="secop-family-summary-badge">Sin datos</div>
+            </div>
+            <div class="secop-family-summary-empty">
+              <div class="missing-company-placeholder">${escapeHtml(emptyMessage)}</div>
+            </div>
+          </article>
+        `;
+      }
+
+      const isSecopI = familyName === "SECOP I";
+      const rows = [
+        ["Plataforma", isSecopI ? "secop_i" : "secop_ii"],
+        ["Tipo de entrada", isSecopI ? "constancia" : "proceso"],
+        ["Identificador", summary.process_id || "—"],
+        ["Proceso", summary.process_id || "—"],
+        ["Referencia", summary.reference || "—"],
+        ["Entidad", summary.entity || "—"],
+        ["Estado", summary.status || "—"],
+        ["Valor", summary.amount || "—"],
+        ["URL oficial", summary.document_url || "—"],
+        ["URL documentos", documentsUrl || "—"],
+      ];
+
+      return `
+        <article class="secop-family-summary-card">
+          <div class="secop-family-summary-head">
+            <div class="secop-family-summary-title">
+              <strong>${escapeHtml(familyName)}</strong>
+              <span>${escapeHtml(processCount)} coincidencia${processCount === 1 ? "" : "s"} en ${escapeHtml(familyName)}</span>
+            </div>
+            <div class="secop-family-summary-badge">${isSecopI ? "Constancia" : "Proceso"}</div>
+          </div>
+          <div class="review-table-wrap">
+            <table class="review-table">
+              <thead>
+                <tr>
+                  <th>Campo</th>
+                  <th>Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${rows.map(([label, value]) => `
+                  <tr>
+                    <td><strong>${escapeHtml(label)}</strong></td>
+                    <td>${(label === "URL oficial" || label === "URL documentos") && value !== "—"
+                      ? `<a href="${escapeHtml(value)}" target="_blank" rel="noreferrer">${escapeHtml(value)}</a>`
+                      : escapeHtml(value)}</td>
+                  </tr>
+                `).join("")}
+              </tbody>
+            </table>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderSecopFamilySummary(data) {
+      // Ensambla las tarjetas SECOP I y SECOP II en la misma fila.
+      const summaries = Array.isArray(data?.process_family_summaries) ? data.process_family_summaries : [];
+      const documentGroups = Array.isArray(data?.document_groups) ? data.document_groups : [];
+      const summaryIndex = new Map();
+      summaries.forEach((summary) => {
+        summaryIndex.set(summary?.source_family || "Sin fuente", summary);
+      });
+      const documentGroupIndex = new Map();
+      documentGroups.forEach((group) => {
+        documentGroupIndex.set(group?.source_family || "Sin fuente", group);
+      });
+      const familySummaries = SECOP_FAMILY_ORDER.map((family) => summaryIndex.get(family) || {
+        source_family: family,
+        process_count: 0,
+      });
+
+      secopFamilySummary.innerHTML = familySummaries.map((summary) => renderSecopFamilySummaryCard(
+        summary,
+        documentGroupIndex.get(summary?.source_family || "Sin fuente"),
+      )).join("");
+    }
+
+    function buildSecopDocumentGroupsFromList(documents) {
+      // Agrupa documentos por familia y dataset para render compacto.
+      const sourceGroups = [];
+      const sourceIndex = new Map();
+
+      documents.forEach((doc) => {
+        const sourceFamily = doc.source_family || "Sin fuente";
+        let sourceGroup = sourceIndex.get(sourceFamily);
+        if (!sourceGroup) {
+          sourceGroup = {
+            source_family: sourceFamily,
+            document_count: 0,
+            datasets: [],
+            datasetIndex: new Map(),
+          };
+          sourceIndex.set(sourceFamily, sourceGroup);
+          sourceGroups.push(sourceGroup);
+        }
+
+        sourceGroup.document_count += 1;
+        const datasetKey = `${doc.dataset_id || ""}::${doc.dataset_name || ""}::${doc.dataset_source_url || ""}`;
+        let datasetGroup = sourceGroup.datasetIndex.get(datasetKey);
+        if (!datasetGroup) {
+          datasetGroup = {
+            dataset_id: doc.dataset_id || "",
+            dataset_name: doc.dataset_name || "Dataset",
+            dataset_source_url: doc.dataset_source_url || "",
+            document_count: 0,
+            documents: [],
+          };
+          sourceGroup.datasetIndex.set(datasetKey, datasetGroup);
+          sourceGroup.datasets.push(datasetGroup);
+        }
+
+        datasetGroup.document_count += 1;
+        datasetGroup.documents.push(doc);
+      });
+
+      return sourceGroups.map((sourceGroup) => ({
+        source_family: sourceGroup.source_family,
+        document_count: sourceGroup.document_count,
+        dataset_count: sourceGroup.datasets.length,
+        datasets: sourceGroup.datasets.map((datasetGroup) => ({
+          dataset_id: datasetGroup.dataset_id,
+          dataset_name: datasetGroup.dataset_name,
+          dataset_source_url: datasetGroup.dataset_source_url,
+          document_count: datasetGroup.document_count,
+          documents: datasetGroup.documents,
+        })),
+      }));
+    }
+
+    function renderSecopDocumentCardGrouped(doc) {
+      // Tarjeta compacta para una pieza documental individual.
+      const officialUrl = doc.official_url || doc.download_url || "";
+      const downloadUrl = doc.download_url || "";
+      return `
+        <div class="missing-company-item secop-document-card">
+          <strong>${escapeHtml(doc.title || doc.file_name || "Documento")}</strong>
+          <span class="review-meta">Archivo: ${escapeHtml(doc.file_name || "—")}</span>
+          <span class="review-meta">Proceso: ${escapeHtml(doc.process_identifier || "—")}</span>
+          <span class="review-meta">Documento: ${escapeHtml(doc.document_identifier || "—")}</span>
+          <span class="review-meta">Coincidencia: ${escapeHtml(doc.source_field || "—")}</span>
+          <span class="review-meta">Extensión: ${escapeHtml(doc.extension || "—")}</span>
+          <span class="review-meta">Descripción: ${escapeHtml(doc.description || "—")}</span>
+          <div class="form-actions">
+            ${officialUrl ? `<a class="btnlink secondary-btn" href="${escapeHtml(officialUrl)}" target="_blank" rel="noreferrer">Abrir oficial</a>` : ""}
+            ${downloadUrl ? `<a class="btnlink secondary-btn" href="${escapeHtml(downloadUrl)}" target="_blank" rel="noreferrer">Abrir descarga</a>` : ""}
+            ${downloadUrl ? `<button type="button" class="secondary-btn secop-import-btn" data-secop-download-url="${escapeHtml(downloadUrl)}" data-secop-file-name="${escapeHtml(doc.file_name || doc.title || "secop-documento.pdf")}">Importar al OCR</button>` : ""}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderSecopDatasetGroupGrouped(dataset) {
+      // Cabecera y contenido de un dataset dentro de una familia.
+      const groupedDocuments = Array.isArray(dataset?.documents) ? dataset.documents : [];
+      const sourceUrl = dataset?.dataset_source_url || "";
+      return `
+        <article class="secop-dataset-group">
+          <div class="secop-dataset-header">
+            <div class="secop-dataset-title">
+              <strong>${escapeHtml(dataset?.dataset_name || "Dataset")}</strong>
+              <span>${escapeHtml(dataset?.dataset_id || "—")}</span>
+            </div>
+            <div class="secop-dataset-count">${escapeHtml(groupedDocuments.length)} documentos</div>
+          </div>
+          ${sourceUrl ? `
+            <div class="secop-dataset-source">
+              <a class="btnlink secondary-btn" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noreferrer">Ver fuente oficial del dataset</a>
+            </div>
+          ` : ""}
+          <div class="secop-document-list">
+            ${groupedDocuments.map(renderSecopDocumentCardGrouped).join("")}
+          </div>
+        </article>
+      `;
+    }
+
+    function renderSecopSourceGroupGrouped(group) {
+      const groupedDatasets = Array.isArray(group?.datasets) ? group.datasets : [];
+      return `
+        <section class="secop-source-group">
+          <div class="secop-source-header">
+            <div class="secop-source-title">
+              <strong>${escapeHtml(group?.source_family || "Sin fuente")}</strong>
+              <span>${escapeHtml(group?.document_count || 0)} documentos en ${escapeHtml(group?.dataset_count || groupedDatasets.length || 0)} datasets</span>
+            </div>
+            <div class="secop-source-badge">Documentos agrupados</div>
+          </div>
+          ${groupedDatasets.map(renderSecopDatasetGroupGrouped).join("")}
+        </section>
+      `;
+    }
+
+    function renderSecopDocuments(data) {
+      const groupedDocuments = Array.isArray(data?.document_groups) && data.document_groups.length
+        ? data.document_groups
+        : buildSecopDocumentGroupsFromList(Array.isArray(data?.documents) ? data.documents : []);
+
+      if (!groupedDocuments.length) {
+        secopDocuments.innerHTML = `
+          <div class="missing-company-placeholder">
+            No se encontraron documentos exactos. Prueba con una constancia, una referencia o un enlace SECOP II que incluya el identificador correcto.
+          </div>
+        `;
+        return;
+      }
+
+      secopDocuments.innerHTML = `
+        <div class="secop-document-groups">
+          ${groupedDocuments.map(renderSecopSourceGroupGrouped).join("")}
+        </div>
+      `;
+    }
+    function renderSecopDocumentCardGrouped(doc) {
+      const officialUrl = doc.official_url || doc.download_url || "";
+      const downloadUrl = doc.download_url || "";
+      const datasetSourceUrl = doc.dataset_source_url || "";
+      const sourceFamily = doc.source_family || "SECOP";
+      return `
+        <div class="missing-company-item secop-document-card">
+          <div class="secop-document-main">
+            <div class="secop-document-head">
+              <strong>${escapeHtml(doc.title || doc.file_name || "Documento")}</strong>
+              <span class="secop-document-pill">${escapeHtml(sourceFamily)}</span>
+            </div>
+            <div class="secop-document-meta">
+              <span>Archivo: ${escapeHtml(doc.file_name || "â€”")}</span>
+              <span>Proceso: ${escapeHtml(doc.process_identifier || "â€”")}</span>
+              <span>Documento: ${escapeHtml(doc.document_identifier || "â€”")}</span>
+              <span>Coincidencia: ${escapeHtml(doc.source_field || "â€”")}</span>
+              <span>ExtensiÃ³n: ${escapeHtml(doc.extension || "â€”")}</span>
+              <span>DescripciÃ³n: ${escapeHtml(doc.description || "â€”")}</span>
+              ${officialUrl ? `<span>URL oficial: <a class="secop-document-url" href="${escapeHtml(officialUrl)}" target="_blank" rel="noreferrer">${escapeHtml(officialUrl)}</a></span>` : ""}
+            </div>
+            <div class="secop-document-links">
+              ${datasetSourceUrl ? `<a class="btnlink secondary-btn" href="${escapeHtml(datasetSourceUrl)}" target="_blank" rel="noreferrer">Ver fuente oficial del dataset</a>` : ""}
+              ${officialUrl ? `<a class="btnlink secondary-btn" href="${escapeHtml(officialUrl)}" target="_blank" rel="noreferrer">Abrir oficial</a>` : ""}
+              ${downloadUrl ? `<a class="btnlink secondary-btn" href="${escapeHtml(downloadUrl)}" target="_blank" rel="noreferrer">Abrir descarga</a>` : ""}
+            </div>
+          </div>
+          <div class="secop-document-actions">
+            ${downloadUrl ? `<button type="button" class="secondary-btn secop-import-btn" data-secop-download-url="${escapeHtml(downloadUrl)}" data-secop-file-name="${escapeHtml(doc.file_name || doc.title || "secop-documento.pdf")}">Importar al OCR</button>` : ""}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderSecopDatasetGroupGrouped(dataset) {
+      const groupedDocuments = Array.isArray(dataset?.documents) ? dataset.documents : [];
+      const sourceUrl = dataset?.dataset_source_url || "";
+      return `
+        <article class="secop-dataset-group">
+          <div class="secop-dataset-header">
+            <div class="secop-dataset-title">
+              <strong>${escapeHtml(dataset?.dataset_name || "Dataset")}</strong>
+              <span>${escapeHtml(dataset?.dataset_id || "â€”")}</span>
+            </div>
+            <div class="secop-dataset-count">${escapeHtml(groupedDocuments.length)} documentos</div>
+          </div>
+          ${sourceUrl ? `
+            <div class="secop-dataset-source">
+              <a class="btnlink secondary-btn" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noreferrer">Ver fuente oficial del dataset</a>
+            </div>
+          ` : ""}
+          <div class="secop-document-list">
+            ${groupedDocuments.map(renderSecopDocumentCardGrouped).join("")}
+          </div>
+        </article>
+      `;
+    }
+
+    const SECOP_FAMILY_ORDER = ["SECOP I", "SECOP II"];
+
+    function getSecopFamilyGroups(data) {
+      // Normaliza los documentos a una estructura SECOP I / SECOP II.
+      const sourceGroups = Array.isArray(data?.document_groups) && data.document_groups.length
+        ? data.document_groups
+        : buildSecopDocumentGroupsFromList(Array.isArray(data?.documents) ? data.documents : []);
+      const groupIndex = new Map();
+
+      sourceGroups.forEach((group) => {
+        groupIndex.set(group?.source_family || "Sin fuente", group);
+      });
+
+      const orderedGroups = SECOP_FAMILY_ORDER.map((family) => groupIndex.get(family) || {
+        source_family: family,
+        document_count: 0,
+        dataset_count: 0,
+        datasets: [],
+      });
+      const extraGroups = sourceGroups.filter((group) => !SECOP_FAMILY_ORDER.includes(group?.source_family || ""));
+      return orderedGroups.concat(extraGroups);
+    }
+
+    function renderSecopDocumentRow(doc) {
+      // Fila delgada para ahorrar espacio cuando los nombres son largos.
+      const title = doc.title || doc.file_name || "Documento";
+      const officialUrl = doc.official_url || doc.download_url || "";
+      const downloadUrl = doc.download_url || "";
+      const metadataItems = [
+        ["Archivo", doc.file_name || "—"],
+        ["Proceso", doc.process_identifier || "—"],
+        ["Documento", doc.document_identifier || "—"],
+        ["Coincidencia", doc.source_field || "—"],
+        ["Extensión", doc.extension || "—"],
+      ];
+
+      return `
+        <article class="secop-document-row">
+          <div class="secop-document-row-main">
+            <div class="secop-document-row-head">
+              ${downloadUrl
+                ? `<a class="secop-document-row-title" href="${escapeHtml(downloadUrl)}" target="_blank" rel="noreferrer" title="Abrir descarga">${escapeHtml(title)}</a>`
+                : `<strong title="${escapeHtml(title)}">${escapeHtml(title)}</strong>`}
+              <span class="secop-document-row-pill">${escapeHtml(doc.source_family || "SECOP")}</span>
+            </div>
+            <div class="secop-document-row-line">
+              ${metadataItems.map(([label, value]) => `
+                <span title="${escapeHtml(`${label}: ${value}`)}"><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</span>
+              `).join("")}
+            </div>
+          </div>
+          <div class="secop-document-row-actions">
+            ${officialUrl ? `<a class="btnlink secondary-btn" href="${escapeHtml(officialUrl)}" target="_blank" rel="noreferrer">Abrir oficial</a>` : ""}
+            ${downloadUrl ? `<button type="button" class="secondary-btn secop-import-btn" data-secop-download-url="${escapeHtml(downloadUrl)}" data-secop-file-name="${escapeHtml(doc.file_name || doc.title || "secop-documento.pdf")}">Importar al OCR</button>` : ""}
+          </div>
+        </article>
+      `;
+    }
+
+    function renderSecopDatasetPanel(dataset) {
+      // Panel desplegable por dataset para aprovechar el espacio vertical.
+      const groupedDocuments = Array.isArray(dataset?.documents) ? dataset.documents : [];
+      const sourceUrl = dataset?.dataset_source_url || "";
+      return `
+        <article class="secop-dataset-group">
+          <div class="secop-dataset-header">
+            <div class="secop-dataset-title">
+              <strong title="${escapeHtml(dataset?.dataset_name || "Dataset")}">${escapeHtml(dataset?.dataset_name || "Dataset")}</strong>
+              <span>${escapeHtml(dataset?.dataset_id || "—")}</span>
+            </div>
+            <div class="secop-dataset-count">${escapeHtml(groupedDocuments.length)} documentos</div>
+          </div>
+          ${sourceUrl ? `
+            <div class="secop-dataset-source">
+              <a class="btnlink secondary-btn" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noreferrer">Ver fuente oficial del dataset</a>
+            </div>
+          ` : ""}
+          <div class="secop-document-rows">
+            ${groupedDocuments.map(renderSecopDocumentRow).join("")}
+          </div>
+        </article>
+      `;
+    }
+
+    function renderSecopFamilyPanel(group) {
+      // Contenedor de una familia SECOP completa dentro de la vista principal.
+      const groupedDatasets = Array.isArray(group?.datasets) ? group.datasets : [];
+      const familyName = group?.source_family || "Sin fuente";
+      const familyCount = Number(group?.document_count || 0);
+      const familyDatasetCount = Number(group?.dataset_count || groupedDatasets.length || 0);
+      const emptyMessage = familyName === "SECOP I"
+        ? "No se encontraron documentos de SECOP I para esta consulta."
+        : "No se encontraron documentos de SECOP II para esta consulta.";
+
+      return `
+        <section class="secop-family-column">
+          <div class="secop-family-header">
+            <div class="secop-family-title">
+              <strong>${escapeHtml(familyName)}</strong>
+              <span>${escapeHtml(familyCount)} documentos en ${escapeHtml(familyDatasetCount)} datasets</span>
+            </div>
+            <div class="secop-family-badge">Documentos agrupados</div>
+          </div>
+          ${groupedDatasets.length ? `
+            <div class="secop-family-datasets">
+              ${groupedDatasets.map(renderSecopDatasetPanel).join("")}
+            </div>
+          ` : `
+            <div class="missing-company-placeholder">${escapeHtml(emptyMessage)}</div>
+          `}
+        </section>
+      `;
+    }
+
+    function renderSecopDocumentsByFamily(data) {
+      // Construye la vista final por familias y datasets.
+      const familyGroups = getSecopFamilyGroups(data);
+      const activeFamilies = familyGroups.filter((group) => Number(group?.document_count || 0) > 0).length;
+      const hasDocuments = activeFamilies > 0;
+
+      if (!hasDocuments) {
+        secopDocuments.innerHTML = `
+          <div class="missing-company-placeholder">
+            No se encontraron documentos exactos. Prueba con una constancia, una referencia o un enlace SECOP II que incluya el identificador correcto.
+          </div>
+        `;
+        return;
+      }
+
+      secopDocuments.innerHTML = `
+        <div class="secop-family-grid">
+          ${familyGroups.slice(0, 2).map(renderSecopFamilyPanel).join("")}
+        </div>
+      `;
+    }
+
+    function renderSecopInspection(data) {
+      // Pinta todos los bloques SECOP con la respuesta del backend.
+      const familyGroups = getSecopFamilyGroups(data);
+      const activeFamilies = familyGroups.filter((group) => Number(group?.document_count || 0) > 0).length;
+      renderSecopSummary(data);
+      renderSecopFamilySummary(data);
+      renderSecopDocumentsByFamily(data);
+      secopOutput.textContent = JSON.stringify(data, null, 2);
+      secopMetadataOutput.textContent = JSON.stringify(data?.metadata || [], null, 2);
+      setSecopState(true, `consulta lista (${data?.documents?.length || 0} documentos · ${activeFamilies || 0} familias)`);
+    }
+
+    async function inspectSecop(event = null, forcedValue = null) {
+      // Consulta el backend de SECOP y actualiza la UI.
+      if (event) {
+        event.preventDefault();
+      }
+
+      const query = String(forcedValue ?? secopInput.value ?? "").trim();
+      if (!query) {
+        secopOutput.textContent = "Escribe un enlace, referencia o constancia antes de consultar SECOP.";
+        secopFamilySummary.innerHTML = `
+          <article class="secop-family-summary-card is-empty">
+            <div class="secop-family-summary-head">
+              <div class="secop-family-summary-title">
+                <strong>SECOP I</strong>
+                <span>Esperando una coincidencia de SECOP I</span>
+              </div>
+              <div class="secop-family-summary-badge">Sin datos</div>
+            </div>
+            <div class="secop-family-summary-empty">
+              <div class="missing-company-placeholder">Ingresa una constancia para consultar SECOP I.</div>
+            </div>
+          </article>
+          <article class="secop-family-summary-card is-empty">
+            <div class="secop-family-summary-head">
+              <div class="secop-family-summary-title">
+                <strong>SECOP II</strong>
+                <span>Esperando una coincidencia de SECOP II</span>
+              </div>
+              <div class="secop-family-summary-badge">Sin datos</div>
+            </div>
+            <div class="secop-family-summary-empty">
+              <div class="missing-company-placeholder">Ingresa un enlace o referencia para consultar SECOP II.</div>
+            </div>
+          </article>
+        `;
+        secopDocuments.innerHTML = `
+          <div class="missing-company-placeholder">
+            Ingresa un valor para consultar los datasets oficiales.
+          </div>
+        `;
+        setSecopState(false, "sin entrada");
+        return;
+      }
+
+      setSecopState(false, "consultando...");
+      secopOutput.textContent = "Consultando SECOP...";
+
+      try {
+        const response = await fetch(`${secopApiBase}/api/inspect?value=${encodeURIComponent(query)}`, {
+          headers: { "Accept": "application/json" },
+          mode: "cors",
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.detail || `HTTP ${response.status}`);
+        }
+
+        renderSecopInspection(data);
+      } catch (error) {
+        const message = error?.message || String(error);
+        secopOutput.textContent = `No se pudo consultar SECOP: ${message}`;
+        secopMetadataOutput.textContent = "Sin metadatos por ahora.";
+        secopFamilySummary.innerHTML = `
+          <article class="secop-family-summary-card is-empty">
+            <div class="secop-family-summary-head">
+              <div class="secop-family-summary-title">
+                <strong>SECOP I</strong>
+                <span>Sin resultados</span>
+              </div>
+              <div class="secop-family-summary-badge">Sin datos</div>
+            </div>
+            <div class="secop-family-summary-empty">
+              <div class="missing-company-placeholder">No se pudo obtener el resumen de SECOP I.</div>
+            </div>
+          </article>
+          <article class="secop-family-summary-card is-empty">
+            <div class="secop-family-summary-head">
+              <div class="secop-family-summary-title">
+                <strong>SECOP II</strong>
+                <span>Sin resultados</span>
+              </div>
+              <div class="secop-family-summary-badge">Sin datos</div>
+            </div>
+            <div class="secop-family-summary-empty">
+              <div class="missing-company-placeholder">No se pudo obtener el resumen de SECOP II.</div>
+            </div>
+          </article>
+        `;
+        secopDocuments.innerHTML = `
+          <div class="missing-company-placeholder">
+            El backend de SECOP no respondio. Verifica que ejecutes <code>cd mvp</code> y luego <code>python -m uvicorn main:app --port 8001</code> en <code>${escapeHtml(secopApiBase)}</code>. Si quieres recarga automatica, usa <code>--reload --reload-dir . --reload-dir ../referencia</code>.
+          </div>
+        `;
+        setSecopState(false, "sin conexion");
+      }
+    }
+
+    function formatReviewStatus(status) {
+      // Texto corto para mostrar el estado de revision humana.
+      const mapping = {
+        pending_review: "pendiente",
+        accepted: "aceptado",
+        edited: "editado",
+        discarded: "descartado",
+      };
+      return mapping[status] || status || "pendiente";
+    }
+
+    function renderReviewSummary(items) {
+      // Resumen agregado de los datos detectados para revision.
+      const counts = items.reduce((accumulator, item) => {
+        const status = item.status || "pending_review";
+        accumulator.total += 1;
+        accumulator[status] = (accumulator[status] || 0) + 1;
+        if (item.reusable) {
+          accumulator.reusable += 1;
+        }
+        return accumulator;
+      }, {
+        total: 0,
+        pending_review: 0,
+        accepted: 0,
+        edited: 0,
+        discarded: 0,
+        reusable: 0,
+      });
+
+      reviewSummary.innerHTML = [
+        { label: "Total", value: counts.total, note: "Hallazgos detectados" },
+        { label: "Pendientes", value: counts.pending_review, note: "Aun sin decidir" },
+        { label: "Aceptados", value: counts.accepted, note: "Listos para usar" },
+        { label: "Editados", value: counts.edited, note: "Corregidos por el usuario" },
+        { label: "Descartados", value: counts.discarded, note: "Ignorados en el flujo" },
+        { label: "Reutilizables", value: counts.reusable, note: "Pueden ir al perfil" },
+      ].map((chip) => `
+        <div class="summary-chip">
+          <strong>${escapeHtml(chip.label)}: ${escapeHtml(chip.value)}</strong>
+          <span>${escapeHtml(chip.note)}</span>
+        </div>
+      `).join("");
+    }
+
+    function renderReviewTable(data) {
+      // Tabla editable con cada hallazgo detectado por el OCR o las reglas.
+      const items = data?.detected_items || [];
+      if (!items.length) {
+        reviewTableBody.innerHTML = `
+          <tr>
+            <td colspan="5">No se detectaron datos para revisar.</td>
+          </tr>
+        `;
+        return;
+      }
+
+      reviewTableBody.innerHTML = items.map((item) => {
+        const currentStatus = item.status || "pending_review";
+        const confidence = Number(item.confidence);
+        const confidenceLabel = Number.isFinite(confidence) ? confidence.toFixed(2) : escapeHtml(item.confidence);
+        const reusable = Boolean(item.reusable);
+        return `
+          <tr data-item-id="${escapeHtml(item.item_id)}">
+            <td>
+              <strong>${escapeHtml(item.label || "Campo")}</strong>
+              <span class="review-meta">${escapeHtml(item.field_key || "")}</span>
+              <span class="review-meta">Fuente: ${escapeHtml(item.source || "desconocida")}</span>
+              <span class="review-meta">Confianza: ${escapeHtml(confidenceLabel)}</span>
+              <span class="review-meta">Estado actual: ${escapeHtml(formatReviewStatus(currentStatus))}</span>
+            </td>
+            <td>
+              <input class="review-value" type="text" value="${escapeHtml(item.value || "")}" />
+            </td>
+            <td>
+              <select class="review-status">
+                <option value="pending_review" ${currentStatus === "pending_review" ? "selected" : ""}>pendiente</option>
+                <option value="accepted" ${currentStatus === "accepted" ? "selected" : ""}>aceptado</option>
+                <option value="edited" ${currentStatus === "edited" ? "selected" : ""}>editado</option>
+                <option value="discarded" ${currentStatus === "discarded" ? "selected" : ""}>descartado</option>
+              </select>
+            </td>
+            <td>
+              <label class="review-check">
+                <input class="review-save-profile" type="checkbox" ${reusable ? "" : "disabled"} />
+                Guardar en perfil
+              </label>
+            </td>
+            <td>
+              <button type="button" class="review-save-btn">Guardar</button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function renderReview(data) {
+      // Actualiza la vista de revision con JSON, resumen y tabla.
+      reviewOutput.textContent = JSON.stringify(data, null, 2);
+      renderReviewSummary(data?.detected_items || []);
+      renderReviewTable(data);
+    }
+
+    function renderMissingCompanyQuestions(profile) {
+      // Muestra los campos del perfil de empresa que aun estan vacios.
+      const missingFields = companyFields.filter((field) => !String(profile?.[field] ?? "").trim());
+
+      if (!missingFields.length) {
+        missingCompanyFields.innerHTML = `
+          <div class="missing-company-item">
+            <strong>No faltan datos obligatorios para completar documentos.</strong>
+            <span class="review-meta">Si luego necesitas completar otro documento, puedes volver a esta tarjeta y llenar los datos faltantes.</span>
+          </div>
+        `;
+        missingCompanyOutput.textContent = "No hay campos pendientes para completar documentos.";
+        setMissingCompanyState(true, "sin datos faltantes");
+        return;
+      }
+
+      missingCompanyFields.innerHTML = missingFields.map((field) => {
+        const meta = companyFieldMeta[field] || {};
+        const label = meta.label || field;
+        const question = meta.question || `¿Cuál es ${label.toLowerCase()}?`;
+        return `
+          <div class="missing-company-item" data-field="${escapeHtml(field)}">
+            <strong>${escapeHtml(question)}</strong>
+            <span class="review-meta">Campo: ${escapeHtml(label)}</span>
+            <input type="text" name="${escapeHtml(field)}" value="" placeholder="Escribe aqui la informacion confirmada" />
+          </div>
+        `;
+      }).join("");
+
+      missingCompanyOutput.textContent = `Hay ${missingFields.length} dato${missingFields.length === 1 ? "" : "s"} por completar.`;
+      setMissingCompanyState(false, `${missingFields.length} dato${missingFields.length === 1 ? "" : "s"} faltante${missingFields.length === 1 ? "" : "s"}`);
+    }
+
+    function buildMissingQuestionQueue(profile, extractionData) {
+      // Construye la cola de preguntas faltantes del perfil y del documento.
+      const queue = [];
+      const seen = new Set();
+
+      companyFields.forEach((field) => {
+        if (String(profile?.[field] ?? "").trim()) {
+          return;
+        }
+        if (seen.has(field)) {
+          return;
+        }
+        const meta = fieldMeta[field] || {};
+        queue.push({
+          field_key: field,
+          label: meta.label || field,
+          question: meta.question || `Cual es ${String(meta.label || field).toLowerCase()}?`,
+          scope: "company",
+        });
+        seen.add(field);
+      });
+
+      (extractionData?.missing_fields || []).forEach((fieldKey) => {
+        if (seen.has(fieldKey)) {
+          return;
+        }
+        const meta = fieldMeta[fieldKey];
+        if (!meta) {
+          return;
+        }
+        queue.push({
+          field_key: fieldKey,
+          label: meta.label || fieldKey,
+          question: meta.question || `Cual es ${String(meta.label || fieldKey).toLowerCase()}?`,
+          scope: "tender",
+        });
+        seen.add(fieldKey);
+      });
+
+      return queue;
+    }
+
+    function renderMissingQuestionStepper(profile, extractionData = null) {
+      // Muestra una sola pregunta por vez para no saturar al usuario.
+      if (!documentQuestionsActive) {
+        missingCompanyFields.innerHTML = `
+          <div class="missing-company-placeholder">
+            Procesa un documento para activar este asistente. Cuando existan datos faltantes,
+            veras una sola pregunta por vez.
+          </div>
+        `;
+        missingCompanyOutput.textContent = "Esperando documento procesado...";
+        setMissingCompanyState(false, "esperando documento");
+        return;
+      }
+
+      if (!documentQuestionQueue.length) {
+        missingCompanyFields.innerHTML = `
+          <div class="missing-company-placeholder">
+            No hay datos faltantes para completar este documento.
+          </div>
+        `;
+        missingCompanyOutput.textContent = "No hay preguntas pendientes.";
+        setMissingCompanyState(true, "sin datos faltantes");
+        return;
+      }
+
+      if (documentQuestionIndex >= documentQuestionQueue.length) {
+        missingCompanyFields.innerHTML = `
+          <div class="missing-company-placeholder">
+            Ya respondiste todas las preguntas faltantes de este documento.
+          </div>
+        `;
+        missingCompanyOutput.textContent = "Todas las preguntas fueron respondidas.";
+        setMissingCompanyState(true, "completo");
+        return;
+      }
+
+      const currentQuestion = documentQuestionQueue[documentQuestionIndex];
+      const totalQuestions = documentQuestionQueue.length;
+      const currentPosition = documentQuestionIndex + 1;
+      const currentValue = documentQuestionAnswers[currentQuestion.field_key] ?? String(profile?.[currentQuestion.field_key] ?? "");
+
+      missingCompanyFields.innerHTML = `
+        <div class="missing-company-item missing-company-step">
+          <span class="missing-company-kicker">${escapeHtml(currentQuestion.scope === "company" ? "Perfil de empresa" : "Documento")}</span>
+          <strong>${escapeHtml(currentQuestion.question)}</strong>
+          <span class="review-meta">Campo: ${escapeHtml(currentQuestion.label)}</span>
+          <span class="review-meta">Paso ${escapeHtml(currentPosition)} de ${escapeHtml(totalQuestions)}</span>
+          <input
+            id="missing-company-answer"
+            type="text"
+            value="${escapeHtml(currentValue)}"
+            placeholder="Escribe aqui la informacion confirmada"
+            autocomplete="off"
+          />
+          <span class="review-meta">${escapeHtml(currentQuestion.scope === "company" ? "Se guardara en el perfil de la empresa." : "Se guardara en la extraccion del documento.")}</span>
+        </div>
+      `;
+
+      missingCompanyOutput.textContent = `Pregunta ${currentPosition} de ${totalQuestions}.`;
+      setMissingCompanyState(false, `${currentPosition} de ${totalQuestions} pendientes`);
+
+      const prevButton = document.getElementById("missing-company-prev");
+      if (prevButton) {
+        prevButton.disabled = documentQuestionIndex === 0;
+      }
+    }
+
+    function fillCompanyForm(profile) {
+      // Rellena el formulario de empresa desde un perfil cargado.
+      companyFields.forEach((field) => {
+        const input = companyForm.elements[field];
+        if (input) {
+          input.value = profile?.[field] ?? "";
+        }
+      });
+    }
+
+    function readCompanyForm() {
+      // Extrae los valores actuales del formulario de empresa.
+      return companyFields.reduce((payload, field) => {
+        const input = companyForm.elements[field];
+        payload[field] = input ? input.value.trim() : "";
+        return payload;
+      }, {});
+    }
+
+    async function loadHealth() {
+      // Lee el estado del backend principal del MVP.
+      try {
+        const response = await fetch("/health", { headers: { "Accept": "application/json" } });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const data = await response.json();
+        healthOutput.textContent = JSON.stringify(data, null, 2);
+        setHealthState(true, `backend listo (${data.version})`);
+      } catch (error) {
+        healthOutput.textContent = `No se pudo consultar /health: ${error.message}`;
+        setHealthState(false, "backend no disponible");
+      }
+    }
+
+    async function loadCompanyProfile() {
+      // Carga el perfil de empresa desde el backend y refresca el asistente.
+      try {
+        const response = await fetch("/company-profile", { headers: { "Accept": "application/json" } });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const data = await response.json();
+        const profile = data.company_profile || data;
+        fillCompanyForm(profile);
+        companyOutput.textContent = JSON.stringify(data, null, 2);
+        setCompanyState(true, "perfil cargado");
+        renderMissingQuestionStepper(profile);
+      } catch (error) {
+        companyOutput.textContent = `No se pudo consultar /company-profile: ${error.message}`;
+        setCompanyState(false, "perfil no disponible");
+      }
+    }
+
+    async function importCompanyProfile(event) {
+      // Importa un JSON de perfil de empresa seleccionado por el usuario.
+      event.preventDefault();
+      const file = companyJsonFileInput.files?.[0];
+
+      if (!file) {
+        companyOutput.textContent = "Selecciona un archivo JSON antes de importarlo.";
+        setCompanyState(false, "sin archivo JSON");
+        return;
+      }
+
+      try {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const response = await fetch("/company-profile/import", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        const profile = data.company_profile || data;
+        fillCompanyForm(profile);
+        companyOutput.textContent = JSON.stringify(data, null, 2);
+        setCompanyState(true, `JSON cargado (${data.source_file_name})`);
+        renderMissingQuestionStepper(profile);
+        companyImportForm.reset();
+      } catch (error) {
+        companyOutput.textContent = `No se pudo importar el perfil JSON: ${error.message}`;
+        setCompanyState(false, "error al importar");
+      }
+    }
+
+    async function saveCompanyProfile(event) {
+      // Persiste manualmente el perfil de empresa editado en pantalla.
+      event.preventDefault();
+      try {
+        const response = await fetch("/company-profile/update", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify(readCompanyForm()),
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const data = await response.json();
+        const profile = data.company_profile || data;
+        fillCompanyForm(profile);
+        companyOutput.textContent = JSON.stringify(data, null, 2);
+        setCompanyState(true, "perfil guardado");
+        renderMissingQuestionStepper(profile);
+      } catch (error) {
+        companyOutput.textContent = `No se pudo guardar el perfil: ${error.message}`;
+        setCompanyState(false, "error al guardar");
+      }
+    }
+
+    async function saveMissingCompanyInfo(event) {
+      // Guarda la respuesta actual de una pregunta faltante.
+      event.preventDefault();
+
+      if (!documentQuestionsActive || !documentQuestionQueue.length || documentQuestionIndex >= documentQuestionQueue.length) {
+        missingCompanyOutput.textContent = "Procesa un documento para ver preguntas faltantes.";
+        setMissingCompanyState(false, "esperando documento");
+        return;
+      }
+
+      const currentQuestion = documentQuestionQueue[documentQuestionIndex];
+      const answerInput = document.getElementById("missing-company-answer");
+      const answerValue = answerInput ? answerInput.value.trim() : "";
+
+      if (!answerValue) {
+        missingCompanyOutput.textContent = "Escribe una respuesta para continuar.";
+        setMissingCompanyState(false, "falta respuesta");
+        return;
+      }
+
+      try {
+        const response = await fetch(`/documents/${encodeURIComponent(documentQuestionDocumentId)}/missing-answer`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify({
+            field_key: currentQuestion.field_key,
+            value: answerValue,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        documentQuestionAnswers[currentQuestion.field_key] = answerValue;
+        processOutput.textContent = JSON.stringify(data, null, 2);
+        documentQuestionIndex += 1;
+        if (currentQuestion.scope === "company") {
+          await loadCompanyProfile();
+        } else {
+          renderMissingQuestionStepper(readCompanyForm());
+        }
+
+        if (documentQuestionIndex >= documentQuestionQueue.length) {
+          missingCompanyOutput.textContent = "Todas las preguntas faltantes ya fueron respondidas.";
+          setMissingCompanyState(true, "completo");
+        }
+      } catch (error) {
+        missingCompanyOutput.textContent = `No se pudieron guardar las respuestas: ${error.message}`;
+        setMissingCompanyState(false, "error al guardar");
+      }
+    }
+
+    function goToPreviousMissingQuestion() {
+      // Permite volver una pregunta dentro del asistente de faltantes.
+      if (!documentQuestionsActive || documentQuestionIndex <= 0) {
+        return;
+      }
+
+      documentQuestionIndex -= 1;
+      renderMissingQuestionStepper(readCompanyForm());
+    }
+
+    async function submitDocumentUpload(file, fileName = "") {
+      // Envía un archivo original al backend para guardarlo intacto.
+      const formData = new FormData();
+      formData.append("file", file, fileName || file?.name || "documento");
+
+      const response = await fetch("/documents/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      return response.json();
+    }
+
+    async function uploadDocument(event) {
+      // Maneja la subida manual de documentos desde la interfaz.
+      event.preventDefault();
+      const file = documentFileInput.files?.[0];
+
+      if (!file) {
+        uploadOutput.textContent = "Selecciona un archivo antes de subirlo.";
+        setUploadState(false, "sin archivo");
+        return;
+      }
+
+      try {
+        const data = await submitDocumentUpload(file);
+        uploadOutput.textContent = JSON.stringify(data, null, 2);
+        setUploadState(true, `archivo guardado (${data.original_file_name})`);
+        latestDocumentId = data.document_id;
+        processDocumentIdInput.value = data.document_id;
+        reviewDocumentIdInput.value = data.document_id;
+        uploadForm.reset();
+      } catch (error) {
+        uploadOutput.textContent = `No se pudo subir el documento: ${error.message}`;
+        setUploadState(false, "error al subir");
+      }
+    }
+
+    async function importSecopDocument(downloadUrl, fileName) {
+      // Descarga un archivo oficial SECOP y lo reinyecta al flujo de subida.
+      const trimmedUrl = String(downloadUrl || "").trim();
+      const trimmedFileName = String(fileName || "secop-documento.pdf").trim() || "secop-documento.pdf";
+
+      if (!trimmedUrl) {
+        secopOutput.textContent = "No hay una URL de descarga para importar.";
+        setSecopState(false, "sin descarga");
+        return;
+      }
+
+      setSecopState(false, "importando archivo...");
+
+      try {
+        const proxyResponse = await fetch(
+          `${secopApiBase}/api/download?url=${encodeURIComponent(trimmedUrl)}&filename=${encodeURIComponent(trimmedFileName)}`,
+          {
+            headers: { "Accept": "application/octet-stream" },
+            mode: "cors",
+          }
+        );
+
+        if (!proxyResponse.ok) {
+          const errorPayload = await proxyResponse.json().catch(() => ({}));
+          throw new Error(errorPayload.detail || `HTTP ${proxyResponse.status}`);
+        }
+
+        const blob = await proxyResponse.blob();
+        const data = await submitDocumentUpload(blob, trimmedFileName);
+        uploadOutput.textContent = JSON.stringify(data, null, 2);
+        setUploadState(true, `archivo SECOP importado (${data.original_file_name})`);
+        latestDocumentId = data.document_id;
+        processDocumentIdInput.value = data.document_id;
+        reviewDocumentIdInput.value = data.document_id;
+        await processDocument(null, data.document_id);
+        setSecopState(true, `importado y procesado (${data.original_file_name})`);
+      } catch (error) {
+        const message = error?.message || String(error);
+        secopOutput.textContent = `No se pudo importar el archivo SECOP: ${message}`;
+        setSecopState(false, "fallo la importacion");
+      }
+    }
+
+    async function processDocument(event = null, forcedDocumentId = null) {
+      // Ejecuta OCR y extracción del documento seleccionado.
+      if (event) {
+        event.preventDefault();
+      }
+
+      const documentId = String(forcedDocumentId || processDocumentIdInput.value.trim() || latestDocumentId || "").trim();
+
+      if (!documentId) {
+        processOutput.textContent = "Ingresa un document_id antes de procesar.";
+        setProcessState(false, "sin documento");
+        return;
+      }
+
+      try {
+        const response = await fetch(`/documents/${encodeURIComponent(documentId)}/process`, {
+          method: "POST",
+          headers: { "Accept": "application/json" },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        processOutput.textContent = JSON.stringify(data, null, 2);
+        setProcessState(true, `documento procesado (${data.document_type})`);
+        latestDocumentId = data.document_id;
+        reviewDocumentIdInput.value = data.document_id;
+        documentQuestionsActive = true;
+        documentQuestionDocumentId = data.document_id;
+        documentQuestionQueue = buildMissingQuestionQueue(readCompanyForm(), data);
+        documentQuestionIndex = 0;
+        documentQuestionAnswers = {};
+        renderReview(data);
+        renderMissingQuestionStepper(readCompanyForm(), data);
+        setReviewState(true, "revision cargada");
+      } catch (error) {
+        processOutput.textContent = `No se pudo procesar el documento: ${error.message}`;
+        setProcessState(false, "error al procesar");
+      }
+    }
+
+    async function loadReview(event) {
+      // Carga la revision guardada para un document_id existente.
+      event.preventDefault();
+      const documentId = reviewDocumentIdInput.value.trim() || latestDocumentId;
+
+      if (!documentId) {
+        reviewOutput.textContent = "Ingresa un document_id antes de cargar la revision.";
+        setReviewState(false, "sin documento");
+        return;
+      }
+
+      try {
+        const response = await fetch(`/review/${encodeURIComponent(documentId)}`, {
+          headers: { "Accept": "application/json" },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        latestDocumentId = data.document_id;
+        processDocumentIdInput.value = data.document_id;
+        reviewDocumentIdInput.value = data.document_id;
+        renderReview(data);
+        if (documentQuestionsActive && documentQuestionDocumentId === data.document_id) {
+          renderMissingQuestionStepper(readCompanyForm(), data);
+        }
+        setReviewState(true, `revision cargada (${data.detected_items?.length || 0} datos)`);
+      } catch (error) {
+        reviewOutput.textContent = `No se pudo cargar la revision: ${error.message}`;
+        reviewSummary.innerHTML = "";
+        reviewTableBody.innerHTML = `
+          <tr>
+            <td colspan="5">Procesa un documento para ver los datos detectados.</td>
+          </tr>
+        `;
+        setReviewState(false, "error al cargar");
+      }
+    }
+
+    async function saveReviewItem(event) {
+      // Guarda una decision de revision para una fila de la tabla.
+      const button = event.target.closest(".review-save-btn");
+      if (!button) {
+        return;
+      }
+
+      const row = button.closest("tr");
+      if (!row) {
+        return;
+      }
+
+      const documentId = reviewDocumentIdInput.value.trim() || latestDocumentId;
+      const itemId = row.dataset.itemId;
+      const valueInput = row.querySelector(".review-value");
+      const statusSelect = row.querySelector(".review-status");
+      const profileCheckbox = row.querySelector(".review-save-profile");
+      const value = valueInput ? valueInput.value.trim() : "";
+      const status = statusSelect ? statusSelect.value : "";
+      const saveToProfile = Boolean(profileCheckbox && profileCheckbox.checked);
+
+      if (!documentId || !itemId) {
+        reviewOutput.textContent = "No se pudo identificar el documento o el dato a revisar.";
+        setReviewState(false, "datos incompletos");
+        return;
+      }
+
+      if (status === "edited" && !value) {
+        reviewOutput.textContent = "Los datos editados necesitan un valor nuevo.";
+        setReviewState(false, "falta valor editado");
+        return;
+      }
+
+      try {
+        const response = await fetch(`/review/${encodeURIComponent(documentId)}/update-item`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify({
+            item_id: itemId,
+            status,
+            value,
+            save_to_company_profile: saveToProfile,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        reviewOutput.textContent = JSON.stringify(data, null, 2);
+        renderReview(data);
+        setReviewState(true, "dato guardado");
+        if (saveToProfile) {
+          await loadCompanyProfile();
+        }
+      } catch (error) {
+        reviewOutput.textContent = `No se pudo guardar la revision: ${error.message}`;
+        setReviewState(false, "error al guardar");
+      }
+    }
+
+    // Conecta eventos y carga el estado inicial al abrir la pagina.
+    refreshBtn.addEventListener("click", loadHealth);
+    reloadCompanyBtn.addEventListener("click", loadCompanyProfile);
+    companyImportForm.addEventListener("submit", importCompanyProfile);
+    companyForm.addEventListener("submit", saveCompanyProfile);
+    missingCompanyForm.addEventListener("submit", saveMissingCompanyInfo);
+    if (missingCompanyPrevBtn) {
+      missingCompanyPrevBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        goToPreviousMissingQuestion();
+      });
+    }
+    uploadForm.addEventListener("submit", uploadDocument);
+    processForm.addEventListener("submit", processDocument);
+    secopForm.addEventListener("submit", inspectSecop);
+    secopRefreshBtn.addEventListener("click", (event) => inspectSecop(event));
+    secopDocuments.addEventListener("click", (event) => {
+      const button = event.target.closest(".secop-import-btn");
+      if (!button) {
+        return;
+      }
+      event.preventDefault();
+      importSecopDocument(button.dataset.secopDownloadUrl || "", button.dataset.secopFileName || "");
+    });
+    reviewForm.addEventListener("submit", loadReview);
+    reviewTableBody.addEventListener("click", saveReviewItem);
+
+    loadHealth();
+    loadCompanyProfile();
+  </script>
+</body>
+</html>

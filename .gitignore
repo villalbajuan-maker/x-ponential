@@ -1,0 +1,19 @@
+.codex-state/
+codex_agents/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.coverage
+htmlcov/
+
+# Temporary project outputs
+tmp/
+Thumbs.db
+.DS_Store

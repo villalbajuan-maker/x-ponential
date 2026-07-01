@@ -1,0 +1,33 @@
+{
+  "business_name": "SERVICIO DE ASEO INDUSTRIAL-SEASIN S.A.S",
+  "nit": "800057657-6",
+  "legal_representative": "",
+  "legal_representative_id": "",
+  "address": "CARRERA 88 A 64 D 90 BODEGA 18",
+  "city": "BOGOTÁ D.C.",
+  "phone": "3164728455",
+  "email": "administracion@seasinsas.com",
+  "bank_name": "",
+  "bank_account_type": "",
+  "bank_account_number": "",
+  "alternative_contacts": {
+    "phone_secondary": "3112284312",
+    "email_secondary": "Comercial1@seasinsas.com"
+  },
+  "validation_status": {
+    "business_name": "verified_public_sources",
+    "nit": "verified_public_sources",
+    "address": "verified_public_sources",
+    "phone": "requires_company_confirmation",
+    "email": "requires_company_confirmation",
+    "legal_representative": "requires_certificate",
+    "legal_representative_id": "requires_certificate_or_manual_input",
+    "bank_data": "requires_bank_certificate"
+  },
+  "warnings": [
+    "No mezclar con OUTSOURCING SEASIN LIMITADA, que tiene NIT 900229503-2.",
+    "Validar estado actual en RUES o certificado de Cámara de Comercio antes de usar en licitaciones.",
+    "No guardar datos bancarios sin certificación bancaria.",
+    "No guardar cédula del representante legal sin documento oficial y aprobación humana."
+  ]
+}

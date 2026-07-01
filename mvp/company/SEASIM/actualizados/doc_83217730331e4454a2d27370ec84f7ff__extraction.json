@@ -1,0 +1,70 @@
+{
+  "document_id": "doc_83217730331e4454a2d27370ec84f7ff",
+  "file_name": "94.-Formato-17-Factores-Ponderables-A-Adenda-No.-4.docx",
+  "file_type": "docx",
+  "document_type": "docx",
+  "confidence": 0.82,
+  "raw_text_preview": "Tenga en cuenta que los espacios en sombreado gris son para diligenciamiento del interesado en el proceso de selección. Este documento podrá ser con los membretes y logos del proponente sí a bien lo considera, no obstante no podrá modificar su contenido.\nFORMATO 17 – FACTOR TÉCNICO ADICIONAL\nBogotá, D.C.,\nSeñores:\nAGENCIA DE CONTRATACIÓN PÚBLICA - COLOMBIA COMPRA EFICIENTE\nCiudad\nReferencia: Proceso de selección: CCENEG-077-01-2024\nPor medio de este documento [Nombre o Razón Social del Proponente], en adelante el “Proponente”, manifiesto:\nMUESTRAS DE CAFÉ SOCIAL\n[indique SI/NO realizará dicho ofrecimiento ponderable] garantizo que en caso de que la Entidad Compradora solicité alguno de los ítems de café social, entregaré tres (3) muestras distintas\nSi el proponente acredita este puntaje y resulta adjudicado, deberá mantener esta condición en la operación secundaría, por lo que deberá presentar al supervisor de la orden de compra una muestra de café de tres marcas distintas de 20 o 24 g...",
+  "detected_items": [
+    {
+      "item_id": "item_a363de4f8b88460b8ac5aa1fc3c8d929",
+      "field_key": "tender.process_number",
+      "label": "Numero de proceso",
+      "value": "CCENEG-077-01-2024",
+      "confidence": 0.86,
+      "source": "regex",
+      "page": null,
+      "status": "pending_review",
+      "reusable": false
+    },
+    {
+      "item_id": "item_47fc258a529e4429a8d540f00d76931a",
+      "field_key": "tender.entity",
+      "label": "Entidad",
+      "value": "NIT",
+      "confidence": 0.82,
+      "source": "regex",
+      "page": null,
+      "status": "pending_review",
+      "reusable": false
+    },
+    {
+      "item_id": "item_e764b462fbd7494bb58ddb13b65ecc57",
+      "field_key": "tender.execution_term",
+      "label": "Plazo de ejecucion",
+      "value": "de la ejecución del Acuerdo Marco",
+      "confidence": 0.8,
+      "source": "regex",
+      "page": null,
+      "status": "pending_review",
+      "reusable": false
+    },
+    {
+      "item_id": "item_4725445c20074c1aa4073483bf7488b5",
+      "field_key": "tender.execution_term",
+      "label": "Plazo de ejecucion",
+      "value": "hasta el final del acuerdo marco de conformidad con lo descrito en el numeral 6",
+      "confidence": 0.8,
+      "source": "regex",
+      "page": null,
+      "status": "pending_review",
+      "reusable": false
+    },
+    {
+      "item_id": "item_fdfa02b206514591b625d80acbcda6ee",
+      "field_key": "tender.execution_term",
+      "label": "Plazo de ejecucion",
+      "value": "hasta el final del acuerdo marco de conformidad con lo descrito en el numeral 4",
+      "confidence": 0.8,
+      "source": "regex",
+      "page": null,
+      "status": "pending_review",
+      "reusable": false
+    }
+  ],
+  "missing_fields": [
+    "tender.offer_value",
+    "tender.date"
+  ],
+  "warnings": []
+}
