@@ -17,3 +17,21 @@ htmlcov/
 tmp/
 Thumbs.db
 .DS_Store
+
+# Editors
+.idea/
+.vscode/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Dependencies and build outputs
+node_modules/
+dist/
+build/
+coverage/
+
+# Logs
+*.log
