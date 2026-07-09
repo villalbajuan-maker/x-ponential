@@ -8,7 +8,7 @@ Nada en este documento debe entenderse como definitivo. Es una primera lectura d
 
 | Integrante | Lectura inicial de aporte | Posible foco | Pendiente por validar |
 | --- | --- | --- | --- |
-| Juan | Liderazgo de servicio, lectura comercial, relacionamiento, vision de producto, experiencia intergeneracional y busqueda de clientes/capital | Direccion, estrategia comercial, inversionistas, producto y escalamiento | Alcance concreto del rol y limites de decision |
+| Juan | Liderazgo de servicio, lectura comercial, relacionamiento estrategico, vision de producto, experiencia intergeneracional y capacidad para conectar oportunidades con clientes, capital y rutas de escalamiento | Direccion, estrategia comercial, inversionistas, producto, escalamiento, apertura de mercado y estructuracion de oportunidades | Alcance concreto del rol, limites de decision, nivel de representacion externa y posibles comisionamientos definidos por el equipo |
 | Ivan | Senior developer con criterio de arquitectura, experiencia de negocio, liderazgo tecnico y capacidad para sentar bases solidas | Fundacion tecnica, backend, arquitectura, calidad y soporte de plataforma | Disponibilidad, tipo de liderazgo tecnico y primeras responsabilidades |
 | Camilo | Matematico, ciencia de datos, conexion entre personas, convocatoria, vision y direccion | Datos, analitica, estrategia, relacionamiento y activacion del equipo | Foco entre producto, comercial, datos y coordinacion |
 | David | Developer full stack con ejecucion fuerte y experiencia reciente en ciberseguridad y prevencion de fraude | Ejecucion tecnica, seguridad, integraciones, producto full stack | Primeras tareas tecnicas y areas donde quiere profundizar |
@@ -29,6 +29,8 @@ La meta no es encasillar a nadie. La meta es encontrar una distribucion inicial 
 ## Roles vivos
 
 Los roles no son titulos fijos. Son responsabilidades que pueden moverse segun la etapa del proyecto.
+
+En una etapa posterior, el equipo debera definir responsabilidades delegadas y limites de decision por area. La intencion es que no todo tenga que ser consultado en pleno, sino que cada integrante pueda actuar con criterio dentro de un marco acordado, especialmente cuando el equipo haya definido comisionamientos, encargos o ambitos de confianza especificos.
 
 - Facilitacion y liderazgo de servicio.
 - Estrategia y priorizacion.
