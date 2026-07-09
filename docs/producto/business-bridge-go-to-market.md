@@ -90,11 +90,19 @@ Para validar la magnitud real del problema en la operacion del cliente, necesita
 
 ### Visuales de soporte
 
-Estos visuales acompanian la sintesis del problema y sirven como material de comunicacion para equipo, cliente o presentaciones internas:
+Estos visuales acompanian la sintesis del problema y sirven como material de comunicacion para equipo, cliente o presentaciones internas.
 
-- [One pager - problema del expediente](assets/business-bridge/01-one-pager-problema-expediente.png)
-- [Flujo actual del dolor](assets/business-bridge/02-flujo-dolor-actual.png)
-- [Matriz de evidencia](assets/business-bridge/03-matriz-evidencia.png)
+#### One pager - problema del expediente
+
+![One pager - problema del expediente](assets/business-bridge/01-one-pager-problema-expediente.png)
+
+#### Flujo actual del dolor
+
+![Flujo actual del dolor](assets/business-bridge/02-flujo-dolor-actual.png)
+
+#### Matriz de evidencia
+
+![Matriz de evidencia](assets/business-bridge/03-matriz-evidencia.png)
 
 ## Cliente objetivo
 
