@@ -88,21 +88,33 @@ Para validar la magnitud real del problema en la operacion del cliente, necesita
 11. Que parte del proceso confiarian en probar primero con asistencia de IA?
 12. Que resultado tendria que ocurrir para que consideren que el piloto resolvio un dolor real?
 
-### Visuales de soporte
+### Lectura visual del problema
 
-Estos visuales acompanian la sintesis del problema y sirven como material de comunicacion para equipo, cliente o presentaciones internas.
+Los siguientes visuales no sustituyen la sintesis escrita. Funcionan como piezas de comunicacion para explicar el problema con mayor claridad ante el equipo, Business Bridge o futuras conversaciones de decision.
 
-#### One pager - problema del expediente
+#### 1. One pager - el problema en una sola lamina
+
+Este visual resume la tesis principal: el cuello de botella no esta en encontrar licitaciones, sino en preparar el expediente documental. Reune el flujo basico, los impactos operativos y el nivel de evidencia disponible para que la conversacion parta de un mapa comun.
 
 ![One pager - problema del expediente](assets/business-bridge/01-one-pager-problema-expediente.png)
 
-#### Flujo actual del dolor
+Nota de lectura: esta pieza sirve como entrada ejecutiva. Ayuda a explicar rapidamente por que el dolor es relevante, donde aparece y que parte aun requiere validacion con datos reales de Business Bridge.
+
+#### 2. Flujo actual del dolor
+
+Este visual descompone el proceso actual en etapas. Su valor no esta en mostrar una solucion, sino en identificar donde se acumulan friccion, reprocesos, carga manual y riesgo documental.
 
 ![Flujo actual del dolor](assets/business-bridge/02-flujo-dolor-actual.png)
 
-#### Matriz de evidencia
+Nota de lectura: este flujo debe usarse para validar con el cliente si el mapa refleja su operacion real. Si Business Bridge confirma o corrige estas etapas, tendremos mejor criterio para definir alcance del piloto.
+
+#### 3. Matriz de evidencia
+
+Este visual separa lo que sabemos con mayor confianza, lo que estamos estimando y lo que todavia debe comprobarse. La intencion es evitar que el equipo trate toda senal como si tuviera el mismo peso.
 
 ![Matriz de evidencia](assets/business-bridge/03-matriz-evidencia.png)
+
+Nota de lectura: esta matriz debe mantenerse viva. Cada conversacion con Business Bridge, cada prueba con documentos reales y cada decision tecnica deberia mover informacion desde "por validar" hacia evidencia confirmada o descartar supuestos.
 
 ## Cliente objetivo
 
@@ -296,3 +308,32 @@ Para avanzar con una propuesta de piloto, deberiamos poder responder positivamen
 - Reporte ejecutivo de investigacion de mercado: `docs/materiales/business-bridge/Reporte_Ejecutivo_Automatizacion_Licitaciones_Colombia.pdf`
 - Analisis de esfuerzo: `docs/materiales/business-bridge/analisis_esfuerzos.pdf`
 - MVP inicial: `mvp/`
+
+## Fuentes e insumos utilizados
+
+Este documento se construye a partir de insumos internos del equipo, materiales de validacion y conversaciones documentadas en el repositorio.
+
+### Insumos principales
+
+- `docs/materiales/business-bridge/Reporte_Ejecutivo_Automatizacion_Licitaciones_Colombia.pdf`
+  - Reporte ejecutivo compartido por Ivan.
+  - Usado como fuente principal para la sintesis del problema, evidencia de mercado, dolores documentales, segmentos potenciales y senales de oportunidad.
+  - El reporte contiene a su vez referencias a fuentes publicas, estudios academicos, benchmarks internacionales y analisis competitivo.
+
+- `docs/materiales/business-bridge/analisis_esfuerzos.pdf`
+  - Analisis de esfuerzo compartido por Alejo.
+  - Usado como insumo para entender complejidad, alcance tecnico preliminar y posibles restricciones del piloto.
+
+- Issue #11
+  - Hilo principal de Business Bridge.
+  - Recoge la conversacion del equipo sobre oportunidad, materiales recibidos, MVP, revision tecnica, organizacion y criterios de avance.
+
+- Issue #12
+  - Frente especifico de producto, mercado y go-to-market.
+  - Recoge las tareas de trabajo de Juan para convertir la oportunidad en una propuesta evaluable.
+
+### Nota metodologica
+
+Las cifras, rangos de horas, senales de mercado y referencias externas incluidas en este documento no deben leerse como validacion final. Algunas provienen del reporte ejecutivo de Ivan y otras son inferencias de trabajo que deben validarse directamente con Business Bridge y, posteriormente, con otros actores del mercado.
+
+Cuando una cifra o afirmacion provenga de una fuente externa citada en el reporte de Ivan, este documento la tratara como insumo secundario hasta que el equipo revise la fuente original o la valide con evidencia propia.
