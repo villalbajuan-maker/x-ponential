@@ -16,22 +16,77 @@ El objetivo no debe ser construir desde el inicio una plataforma completa de ges
 
 ## Problema
 
-Business Bridge enfrenta una carga documental alta en procesos licitatorios. Cada proceso exige revisar pliegos, anexos, formatos, formularios, requisitos habilitantes, soportes y documentos variables segun entidad, modalidad y objeto contractual.
+Las empresas y consultoras que participan en licitaciones publicas en Colombia pierden una cantidad desproporcionada de tiempo y esfuerzo re-digitando y reformateando informacion que ya poseen, para adaptarla a los formularios y anexos que cada entidad estatal define de manera distinta.
 
-El problema no parece estar solamente en llenar documentos. El dolor principal esta en reducir tiempo, friccion, errores, reprocesos y dependencia operativa dentro del flujo documental de licitaciones.
+No es principalmente un problema de falta de informacion. Es un problema de baja estandarizacion entre entidades, carga documental variable, procesos manuales de transcripcion y alta exigencia de verificacion.
+
+El problema tampoco parece estar en encontrar la licitacion. Ese frente ya esta mejor cubierto por otras herramientas. El dolor principal esta en preparar el expediente: convertir datos corporativos dispersos o recurrentes en el formato exacto que exige cada pliego, sin errores y dentro del tiempo disponible.
 
 ### Dolor observado
 
-- Revision manual de multiples documentos por proceso.
-- Identificacion repetitiva de requisitos y anexos obligatorios.
-- Diligenciamiento de formularios con informacion recurrente del proponente.
-- Riesgo de errores, omisiones o inconsistencias documentales.
-- Dependencia de criterio experto para revisar cumplimiento.
-- Dificultad para escalar el numero de procesos atendidos sin aumentar carga operativa.
+- Lectura de pliegos extensos, heterogeneos y, en ocasiones, disponibles como PDF escaneado sin capa de texto.
+- Identificacion manual de requisitos habilitantes, anexos obligatorios, formatos y condiciones particulares de cada proceso.
+- Re-transcripcion de informacion corporativa recurrente en formularios distintos: NIT, datos legales, indicadores financieros, experiencia, personal, certificaciones y soportes.
+- Diligenciamiento repetitivo, de bajo valor agregado y propenso a errores por fatiga, presion de tiempo o diferencias de formato.
+- Validacion de datos duros, como cifras, fechas y vigencias, donde una inconsistencia puede poner en riesgo la propuesta.
+- Armado final del expediente en el orden y formato exigido.
+- Revision humana indispensable sobre documentos que hoy se construyen casi desde cero, no sobre un borrador previamente organizado.
+- Dependencia de criterio experto para revisar cumplimiento y evitar omisiones.
+- Dificultad para escalar el numero de procesos atendidos sin aumentar proporcionalmente la carga operativa.
+
+### Impacto del problema
+
+- Tiempo: el reporte de validacion cita entre 8 y 30 horas por propuesta en re-digitacion y hasta 40 a 200 horas para expedientes complejos.
+- Costo operativo: preparar propuestas consume tiempo cualificado y genera costos indirectos relevantes, especialmente cuando hay varios procesos simultaneos.
+- Riesgo de error: informacion inexacta o incompleta puede ser causal de rechazo o inhabilitacion.
+- Riesgo de rechazo: referencias internacionales citadas en el reporte muestran porcentajes relevantes de propuestas rechazadas por errores de cumplimiento documental.
+- Perdida de oportunidades: algunas empresas pueden descartar procesos por falta de tiempo para prepararlos, no necesariamente por falta de capacidad para ejecutarlos.
+- Dependencia de conocimiento experto: el saber operativo vive en personas y consultores, no en un sistema replicable.
+- Dificultad para escalar: una empresa o consultora no puede atender mas procesos simultaneos sin sumar personas o sin aceptar mayor riesgo operativo.
+
+### Evidencia del problema
+
+#### Evidencia fuerte
+
+- Informacion inexacta o incompleta como causal de rechazo o inhabilitacion, segun doctrina de Colombia Compra Eficiente citada en el reporte.
+- Estudios academicos que identifican la carga documental como barrera estructural para MiPymes.
+- Existencia de consultoras colombianas que cobran por resolver manualmente este problema, lo que sugiere que el mercado ya paga por una solucion artesanal.
+- Volumen relevante de contratacion publica en Colombia y presencia de miles de proponentes activos, lo que confirma que el problema ocurre a escala.
+
+#### Evidencia estimada
+
+- El tamano del mercado direccionable en Colombia es una estimacion bottom-up, no una cifra publicada como estudio especifico del nicho.
+- Las horas perdidas por duplicidad de informacion provienen de benchmarks, fuentes comparables y lectura del ecosistema, no de una encuesta formal al segmento colombiano.
+
+#### Hipotesis por validar
+
+- Que las horas reales perdidas por Business Bridge coincidan con los rangos observados en la investigacion.
+- Que Business Bridge y clientes similares tengan disposicion real a pagar por reducir este dolor.
+- Que exista tolerancia a documentos pre-generados o asistidos por IA en un proceso legalmente sensible, siempre con revision humana.
+- Que el dolor sea suficientemente recurrente para convertirse en producto o servicio repetible, y no solo en consultoria a medida.
 
 ### Hipotesis de problema
 
-Si Business Bridge pudiera estructurar informacion base del proponente, identificar requisitos recurrentes, asistir el diligenciamiento de formatos y mantener revision humana sobre puntos criticos, podria aumentar velocidad, orden y control en la preparacion documental de licitaciones.
+Si Business Bridge pudiera estructurar informacion base del proponente, identificar requisitos recurrentes, cruzar esa informacion contra los documentos del proceso, senalar faltantes y asistir el diligenciamiento de formatos con revision humana obligatoria, podria reducir tiempo, friccion y riesgo en la preparacion documental de licitaciones.
+
+La hipotesis no es reemplazar el criterio experto ni automatizar la radicacion completa. Es convertir el trabajo mecanico y repetitivo en un flujo asistido, trazable y revisable, para que el esfuerzo humano se concentre en validar calidad, cumplimiento y decisiones sensibles.
+
+### Preguntas pendientes para Business Bridge
+
+Para validar la magnitud real del problema en la operacion del cliente, necesitamos responder:
+
+1. Cuantas licitaciones revisan, presentan y descartan al mes?
+2. Cuantas licitaciones descartan por falta de tiempo para prepararlas?
+3. Cuantas horas toma hoy preparar un expediente documental promedio?
+4. Que proporcion del tiempo se va en lectura del pliego, transcripcion, diligenciamiento, validacion y armado final?
+5. Que informacion corporativa se repite en casi todos los procesos?
+6. Quien mantiene actualizada esa informacion y donde vive actualmente?
+7. Han perdido o han sido descalificados por errores documentales en el ultimo ano?
+8. Que errores generan mayor riesgo: fechas, cifras, documentos vencidos, requisitos omitidos, anexos incompletos u otros?
+9. Cual es el maximo de procesos simultaneos que pueden atender con el equipo actual?
+10. Que herramienta o metodo usan hoy: Excel, Word, plantillas, checklists, ChatGPT, consultores u otros?
+11. Que parte del proceso confiarian en probar primero con asistencia de IA?
+12. Que resultado tendria que ocurrir para que consideren que el piloto resolvio un dolor real?
 
 ## Cliente objetivo
 
