@@ -88,6 +88,14 @@ Para validar la magnitud real del problema en la operacion del cliente, necesita
 11. Que parte del proceso confiarian en probar primero con asistencia de IA?
 12. Que resultado tendria que ocurrir para que consideren que el piloto resolvio un dolor real?
 
+### Visuales de soporte
+
+Estos visuales acompanian la sintesis del problema y sirven como material de comunicacion para equipo, cliente o presentaciones internas:
+
+- [One pager - problema del expediente](assets/business-bridge/01-one-pager-problema-expediente.png)
+- [Flujo actual del dolor](assets/business-bridge/02-flujo-dolor-actual.png)
+- [Matriz de evidencia](assets/business-bridge/03-matriz-evidencia.png)
+
 ## Cliente objetivo
 
 El cliente inicial es Business Bridge como empresa que ya participa o acompana procesos licitatorios y experimenta friccion documental dentro de su operacion.
