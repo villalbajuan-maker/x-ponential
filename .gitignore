@@ -12,6 +12,7 @@ __pycache__/
 .pytype/
 .coverage
 htmlcov/
+coverage.json
 
 # Temporary project outputs
 tmp/

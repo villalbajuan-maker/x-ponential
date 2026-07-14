@@ -25,4 +25,3 @@ Define una accion concreta y pequena.
 ## Decision esperada
 
 Que necesita decidir el equipo?
-

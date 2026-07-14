@@ -25,4 +25,3 @@ Pendiente
 ## Siguiente paso
 
 - [ ] 
-

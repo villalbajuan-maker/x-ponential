@@ -21,4 +21,3 @@ Agrega informacion suficiente para que el equipo pueda responder.
 ## Posibles caminos
 
 - 
-

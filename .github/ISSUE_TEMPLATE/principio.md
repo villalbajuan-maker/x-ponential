@@ -24,4 +24,3 @@ Explica tu punto con claridad.
 ## Cambio sugerido
 
 Si aplica, propone una redaccion o ajuste.
-

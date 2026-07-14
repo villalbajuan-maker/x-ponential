@@ -1,0 +1,8 @@
+NIT: 901.234.567-8
+Correo: contacto@businessbridge.co
+Telefono: +57 300 123 4567
+Proceso de seleccion: LP-2026-001
+Entidad contratante: Alcaldia de Bogota
+Valor de la oferta: COP $12.345.678
+Plazo de ejecucion: 90 dias
+Fecha: 10/07/2026

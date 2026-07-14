@@ -22,4 +22,3 @@ Que necesita revisar el equipo?
 ## Decisiones pendientes
 
 - 
-
