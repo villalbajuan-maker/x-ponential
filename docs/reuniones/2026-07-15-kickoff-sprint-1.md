@@ -1,0 +1,76 @@
+# Reunion: Kickoff Sprint 1 - MVP Business Bridge
+
+## Fecha
+
+2026-07-15 (Sprint 1: 2026-07-15 a 2026-07-22)
+
+## Participantes
+
+- Ivan Duque Aldana - Delivery Manager / Project Manager
+- Juan Carlos Villalba - Product Manager & Go-to-Market Lead
+- Olav (Camilo) - AI Engineer & Customer Discovery Lead
+- David - Arquitecto de Solucion y DevOps
+- Alejo - Lead Developer
+
+## Proposito
+
+Arrancar el Sprint 1 (una semana) con dos frentes en paralelo: avanzar el desarrollo del primer MVP (Business Bridge) y dejar consolidada la metodologia de trabajo del equipo (roles, entregables, Specs y seguimiento), en linea con los objetivos decididos el 2026-07-10.
+
+## Disponibilidad de la semana
+
+| Integrante | Rol | Horas disponibles |
+| --- | --- | --- |
+| Alejo | Lead Developer | 36h |
+| Juan Carlos | Product Manager & GTM Lead | 20h |
+| Olav (Camilo) | AI Engineer & Customer Discovery Lead | 20h |
+| David | Arquitecto de Solucion y DevOps | 20h |
+| Ivan | Delivery Manager / PM | 12h |
+| **Total** | | **108h** |
+
+Alejo concentra la mayor capacidad y debe quedar protegido para ejecucion del MVP. Ivan tiene la disponibilidad mas baja: su tiempo se destina a facilitar, coordinar y remover bloqueos, no a producir documentos extensos el mismo.
+
+## Agenda propuesta (9:00-11:00, 2 horas)
+
+| Hora | Tema | Responsable |
+| --- | --- | --- |
+| 09:00-09:05 | Apertura y objetivo del sprint | Ivan |
+| 09:05-09:15 | Repaso rapido de decisiones del 2026-07-10 (los 5 objetivos del ciclo) | Ivan |
+| 09:15-09:35 | Arquitectura del MVP y metodologia basada en Specs | David |
+| 09:35-09:50 | Estado y plan de desarrollo del MVP Business Bridge | Alejo |
+| 09:50-10:10 | Product Vision, ICP, backlog priorizado y diseno del piloto comercial | Juan Carlos |
+| 10:10-10:25 | Mapa del proceso del cliente y oportunidades de automatizacion | Olav |
+| 10:25-10:40 | Alineacion de dependencias (arquitectura - desarrollo - producto - IA) | Todos |
+| 10:40-10:55 | Cierre de la tabla de entregables y responsables del Sprint 1 | Ivan facilita |
+| 10:55-11:00 | Riesgos, bloqueos y compromisos de cierre | Todos |
+
+## Tabla de entregables y tareas por rol - Sprint 1 (2026-07-15 a 2026-07-22)
+
+| Rol | Responsable | Horas | Tarea / entregable del sprint | Vinculado a | Fecha entrega |
+| --- | --- | --- | --- | --- | --- |
+| Arquitecto de Solucion y DevOps | David | 20h | Arquitectura del MVP documentada (v1), esqueleto metodologico basado en Specs, estandares tecnicos iniciales, ambiente de desarrollo y pruebas | Entregables 30 dias del rol; "Preparar avance tecnico como arquitecto" (accion 07-15) | 2026-07-21 |
+| Lead Developer | Alejo | 36h | Funcionalidades priorizadas del MVP Business Bridge implementadas, demo funcional de sprint, issues cerrados con evidencia, estado tecnico documentado | "Construir 2 MVPs y ejecutar al menos uno con cliente real"; "Preparar avance tecnico como ejecutor" (accion 07-15) | 2026-07-21 |
+| AI Engineer & Customer Discovery Lead | Olav (Camilo) | 20h | Mapa del proceso actual del cliente Business Bridge, primer documento de oportunidades de automatizacion, prompts/flujos agenticos iniciales | Objetivo "Ejecutar 1 piloto de Business Bridge con cliente real"; "Coordinar webinars y acciones comerciales" | 2026-07-21 |
+| Product Manager & Go-to-Market Lead | Juan Carlos | 20h | Product Vision, ICP, backlog priorizado y diseno del piloto comercial de Business Bridge; hipotesis inicial de pricing | Objetivo "Validar metodologia Lean Startup" (Juan ok); "Compartir documentacion LegalTech"; "Iniciar comercializacion de Nucleos" (acciones pendientes) | 2026-07-21 |
+| Delivery Manager / PM | Ivan | 12h | Roadmap de ejecucion del sprint, documento de roles/metodo/metricas cerrado (issue #13), dashboard de avance y registro de riesgos | "Crear documento colaborativo"; "Generar documento final de roles y entregables" (acciones pendientes) | 2026-07-16 |
+
+## Preguntas clave
+
+- ¿La tabla de entregables por rol es realista frente a la disponibilidad real de cada integrante (en particular Ivan con 12h)?
+- ¿Cual es el segundo MVP a desarrollar en este ciclo: LegalTech, Nucleos u otro, segun el criterio comercial de Juan Carlos?
+- ¿La metodologia basada en Specs propuesta por David queda aprobada como estandar del equipo desde este sprint?
+- ¿Que bloqueos tecnicos o de acceso al cliente pueden frenar el piloto de Business Bridge esta semana?
+
+## Decisiones esperadas
+
+- Aprobar la tabla de entregables por rol del Sprint 1.
+- Confirmar el segundo MVP a priorizar en el ciclo.
+- Validar la metodologia Specs como estandar de trabajo tecnico.
+- Confirmar fecha y formato del Sprint Review (2026-07-22, 9:00-11:00).
+
+## Proximas acciones
+
+| Accion | Responsable | Fecha objetivo | Estado |
+| --- | --- | --- | --- |
+| Cerrar y compartir la tabla de entregables por rol acordada en el kickoff | Ivan | 2026-07-15 | Pendiente |
+| Confirmar el segundo MVP a priorizar (LegalTech / Nucleos / otro) | Juan Carlos | 2026-07-15 | Pendiente |
+| Preparar y facilitar el Sprint Review | Ivan | 2026-07-22 | Pendiente |
