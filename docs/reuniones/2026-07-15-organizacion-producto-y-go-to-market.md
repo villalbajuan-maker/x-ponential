@@ -68,7 +68,7 @@ Se identifico una nueva categoria de negocio. La hipotesis: los abogados ya usan
 | LexControl | Vigilancia judicial | En construccion |
 | Nucleos | Sistema operativo para campanas politicas | Comercializando |
 | Infraestructura LegalTech | Implementacion gobernada de IA para firmas boutique | Hipotesis validada, por estructurar |
-| Elena OS | Implementacion IA para salud mental | Propuesta |
+| Elena OS | Implementacion IA para whatsapp | Propuesta |
 
 ## Preguntas abiertas
 
