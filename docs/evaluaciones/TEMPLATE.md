@@ -14,6 +14,19 @@ Evaluacion v1 aplicada con el [Score de oportunidades X-ponential](../SCORE-DE-O
 | Issue |  |
 | Etapa | Semilla / Validacion / Piloto / Producto / Pausada / Descartada |
 
+## Tabla resumida de decision
+
+| Caracteristica | Resultado | Valor / lectura |
+| --- | --- | --- |
+| Filtros no negociables | Valor consolidado: **1 / 2 / 3 / 4 / 5** | No pasa / Puede pasar condicionalmente / Pasa condicionalmente; requiere validacion / Pasa condicionalmente / Pasa absolutamente |
+| Score ponderado | **0.00 / 100** | Nivel discretizado: **1 / 2 / 3 / 4 / 5** |
+| Matriz esfuerzo vs ingreso | Esfuerzo: **1 / 2 / 3 / 5 / 8**; cercania a ingreso: **0 / 1 / 2 / 3 / 5 / 8** | Prioridad comercial / Validar ya / Piloto acotado / Validar antes de construir / Pausar |
+| Decision y siguiente puerta | Decision final: **por definir** | Proximo entregable: **por definir**; fecha de revision: **por definir** |
+
+Discretizacion del score: **1 = 0 a < 20; 2 = 20 a < 40; 3 = 40 a < 60; 4 = 60 a < 80; 5 = 80 a 100**.
+
+El valor consolidado de no negociables corresponde al menor valor asignado entre todos los filtros.
+
 ## Lectura ejecutiva
 
 Sintesis breve de la oportunidad, su estado real, su potencial y la recomendacion principal.
@@ -27,18 +40,22 @@ Debe responder en lenguaje claro:
 
 ## Filtros no negociables
 
-| Filtro | Estado | Justificacion |
-| --- | --- | --- |
-| Integridad | Pasa / Condicionado / No pasa |  |
-| Reputacion | Pasa / Condicionado / No pasa |  |
-| Salud y vida sostenible | Pasa / Condicionado / No pasa |  |
-| Fe y conciencia | Pasa / Condicionado / No pasa |  |
-| Independencia responsable | Pasa / Condicionado / No pasa |  |
-| Excelencia tecnica | Pasa / Condicionado / No pasa |  |
-| Riesgo legal / regulatorio | Pasa / Condicionado / No pasa |  |
-| Promesa responsable | Pasa / Condicionado / No pasa |  |
+| Filtro | Valor | Estado equivalente | Justificacion |
+| --- | ---: | --- | --- |
+| Integridad | 1 / 2 / 3 / 4 / 5 |  |  |
+| Reputacion | 1 / 2 / 3 / 4 / 5 |  |  |
+| Salud y vida sostenible | 1 / 2 / 3 / 4 / 5 |  |  |
+| Fe y conciencia | 1 / 2 / 3 / 4 / 5 |  |  |
+| Independencia responsable | 1 / 2 / 3 / 4 / 5 |  |  |
+| Excelencia tecnica | 1 / 2 / 3 / 4 / 5 |  |  |
+| Riesgo legal / regulatorio | 1 / 2 / 3 / 4 / 5 |  |  |
+| Promesa responsable | 1 / 2 / 3 / 4 / 5 |  |  |
 
-Resultado: **pasa / pasa condicionado / no pasa**.
+Escala: **1 no pasa; 2 puede pasar condicionalmente; 3 pasa condicionalmente y requiere validacion; 4 pasa condicionalmente; 5 pasa absolutamente**.
+
+Valor consolidado: **1 / 2 / 3 / 4 / 5** (usar el menor valor de los filtros).
+
+Resultado: **no pasa / puede pasar condicionalmente / pasa para validacion controlada / pasa condicionado / pasa absolutamente**.
 
 ## Score ponderado
 
@@ -58,6 +75,10 @@ Escala Fibonacci: 0, 1, 2, 3, 5, 8.
 | Aprendizaje estrategico aunque no escale | 3 % |  |  |  |
 
 **Score total: 0.00 / 100**
+
+**Nivel discretizado: 1 / 2 / 3 / 4 / 5**.
+
+Rangos: **1 = 0 a < 20; 2 = 20 a < 40; 3 = 40 a < 60; 4 = 60 a < 80; 5 = 80 a 100**.
 
 Decision sugerida por score: **priorizar / aprobar validacion formal / mantener como semilla o pedir ajustes / pausar hasta nueva evidencia / descartar por ahora**.
 
