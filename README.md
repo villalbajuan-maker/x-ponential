@@ -33,6 +33,7 @@ Durante los proximos ciclos, el equipo esta concentrado en:
 - [MVP inicial](mvp/)
 - [Equipo y roles vivos](docs/EQUIPO.md)
 - [Criterios de oportunidad](docs/CRITERIOS-DE-OPORTUNIDAD.md)
+- [Score de oportunidades](docs/SCORE-DE-OPORTUNIDADES.md)
 - [Acuerdos operativos](docs/ACUERDOS.md)
 
 ## Issues activos
@@ -47,6 +48,7 @@ Durante los proximos ciclos, el equipo esta concentrado en:
 3. Definir foco de 90 dias y disponibilidad real del equipo.
 4. Convertir roles sugeridos en responsabilidades, autoridad, metricas y entregables.
 5. Decidir si Business Bridge avanza como piloto acotado, servicio especializado, producto repetible o pausa.
+6. Aplicar el score de oportunidades a los MVPs que pidan foco del equipo.
 
 ## Como trabajamos
 

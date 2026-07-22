@@ -2,6 +2,8 @@
 
 Este documento ayuda a decidir que oportunidades merecen atencion del equipo.
 
+Para decisiones que impliquen foco, tiempo, reputacion, capital o capacidad relevante del equipo, estos criterios se aplican mediante el [Score de oportunidades](SCORE-DE-OPORTUNIDADES.md).
+
 ## Tesis
 
 No toda oportunidad rentable es una buena oportunidad para X-ponential. Y no toda oportunidad valiosa debe monetizar desde el primer dia.
@@ -45,4 +47,3 @@ El portafolio debe equilibrar caja, aprendizaje, activos e impacto.
 - Que costo tendria equivocarnos?
 - Que activo queda si el experimento no escala?
 - Que principio podria ponerse en tension?
-

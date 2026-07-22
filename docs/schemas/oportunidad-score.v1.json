@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/villalbajuan-maker/x-ponential/docs/schemas/oportunidad-score.v1.json",
+  "title": "Oportunidad Score X-ponential v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "oportunidad",
+    "filtros_no_negociables",
+    "score_ponderado",
+    "matriz_esfuerzo_ingreso",
+    "evidencia",
+    "resultado"
+  ],
+  "properties": {
+    "version": {
+      "const": "1.0"
+    },
+    "oportunidad": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nombre", "responsable", "fecha", "etapa"],
+      "properties": {
+        "nombre": { "type": "string", "minLength": 1 },
+        "responsable": { "type": "string", "minLength": 1 },
+        "fecha": { "type": "string", "format": "date" },
+        "issue": { "type": "string" },
+        "etapa": {
+          "type": "string",
+          "enum": ["semilla", "validacion", "piloto", "producto", "pausada", "descartada"]
+        }
+      }
+    },
+    "filtros_no_negociables": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["filtro", "estado", "justificacion"],
+        "properties": {
+          "filtro": {
+            "type": "string",
+            "enum": [
+              "integridad",
+              "reputacion",
+              "salud_y_vida_sostenible",
+              "fe_y_conciencia",
+              "independencia_responsable",
+              "excelencia_tecnica",
+              "riesgo_legal_regulatorio",
+              "promesa_responsable"
+            ]
+          },
+          "estado": {
+            "type": "string",
+            "enum": ["pasa", "condicionado", "no_pasa"]
+          },
+          "justificacion": { "type": "string" }
+        }
+      }
+    },
+    "score_ponderado": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["criterio", "peso", "valor_fibonacci", "puntaje", "justificacion"],
+        "properties": {
+          "criterio": {
+            "type": "string",
+            "enum": [
+              "problema_real_y_dolor_relevante",
+              "cliente_usuario_o_beneficiario_claro",
+              "evidencia_disponible",
+              "potencial_de_caja_o_monetizacion",
+              "potencial_de_activo_escalable",
+              "velocidad_de_validacion",
+              "encaje_con_capacidades_del_equipo",
+              "riesgo_tecnico_legal_reputacional_y_operativo",
+              "coherencia_con_adn_y_principios",
+              "aprendizaje_estrategico_aunque_no_escale"
+            ]
+          },
+          "peso": { "type": "number", "minimum": 0, "maximum": 100 },
+          "valor_fibonacci": {
+            "type": "integer",
+            "enum": [0, 1, 2, 3, 5, 8]
+          },
+          "puntaje": { "type": "number", "minimum": 0, "maximum": 100 },
+          "justificacion": { "type": "string" }
+        }
+      }
+    },
+    "matriz_esfuerzo_ingreso": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["esfuerzo", "cercania_ingreso", "lectura"],
+      "properties": {
+        "esfuerzo": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["valor", "factores"],
+          "properties": {
+            "valor": {
+              "type": "integer",
+              "enum": [1, 2, 3, 5, 8]
+            },
+            "factores": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "madurez_producto",
+                "codigo_existente",
+                "complejidad_tecnica",
+                "riesgo_operativo_legal",
+                "dependencia_equipo"
+              ],
+              "properties": {
+                "madurez_producto": { "$ref": "#/$defs/factor_esfuerzo" },
+                "codigo_existente": { "$ref": "#/$defs/factor_esfuerzo" },
+                "complejidad_tecnica": { "$ref": "#/$defs/factor_esfuerzo" },
+                "riesgo_operativo_legal": { "$ref": "#/$defs/factor_esfuerzo" },
+                "dependencia_equipo": { "$ref": "#/$defs/factor_esfuerzo" }
+              }
+            }
+          }
+        },
+        "cercania_ingreso": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["valor", "justificacion"],
+          "properties": {
+            "valor": {
+              "type": "integer",
+              "enum": [0, 1, 2, 3, 5, 8]
+            },
+            "justificacion": { "type": "string" }
+          }
+        },
+        "lectura": { "type": "string" }
+      }
+    },
+    "evidencia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hechos", "inferencias", "hipotesis"],
+      "properties": {
+        "hechos": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "inferencias": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "hipotesis": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "resultado": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "score_total",
+        "decision_sugerida",
+        "decision_final",
+        "responsable",
+        "proximo_entregable",
+        "fecha_revision",
+        "criterios_continuar",
+        "criterios_detener"
+      ],
+      "properties": {
+        "score_total": { "type": "number", "minimum": 0, "maximum": 100 },
+        "decision_sugerida": { "$ref": "#/$defs/decision" },
+        "decision_final": { "$ref": "#/$defs/decision" },
+        "responsable": { "type": "string" },
+        "proximo_entregable": { "type": "string" },
+        "fecha_revision": { "type": "string", "format": "date" },
+        "criterios_continuar": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "criterios_detener": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "factor_esfuerzo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["valor", "peso", "justificacion"],
+      "properties": {
+        "valor": {
+          "type": "integer",
+          "enum": [1, 2, 3, 5, 8]
+        },
+        "peso": { "type": "number", "minimum": 0, "maximum": 100 },
+        "justificacion": { "type": "string" }
+      }
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "priorizar",
+        "aprobar_validacion_formal",
+        "mantener_semilla",
+        "solicitar_ajustes",
+        "pausar",
+        "descartar_por_ahora"
+      ]
+    }
+  }
+}
