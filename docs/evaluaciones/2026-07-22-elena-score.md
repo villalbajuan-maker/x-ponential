@@ -2,7 +2,7 @@
 
 ## Estado
 
-Evaluacion v1 aplicada con el [Score de oportunidades X-ponential](../SCORE-DE-OPORTUNIDADES.md).
+Entregable oficial v1.0 aplicado con el [Score de oportunidades X-ponential](../SCORE-DE-OPORTUNIDADES.md) y el formato congelado en la [plantilla de evaluacion](TEMPLATE.md).
 
 ## Oportunidad
 
@@ -12,7 +12,7 @@ Evaluacion v1 aplicada con el [Score de oportunidades X-ponential](../SCORE-DE-O
 | Responsable | Juan Carlos Villalba |
 | Fecha | 2026-07-22 |
 | Issue | #14 |
-| Etapa | Validacion |
+| Etapa | Validacion formal |
 
 ## Lectura ejecutiva
 
@@ -56,7 +56,7 @@ Escala Fibonacci: 0, 1, 2, 3, 5, 8.
 
 **Score total: 53.88 / 100**
 
-Decision sugerida por score: **pausar construccion hasta nueva evidencia**.
+Decision sugerida por score: **pausar hasta nueva evidencia**.
 
 Decision final propuesta: **aprobar validacion formal condicionada**.
 
