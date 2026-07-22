@@ -213,7 +213,11 @@ Este documento se complementa con:
 
 El documento explica el criterio. El schema define la estructura. La plantilla permite aplicar el metodo a oportunidades concretas.
 
-Cada evaluacion formal debe usar el formato de salida definido en `docs/evaluaciones/TEMPLATE.md`. Ese formato queda congelado como v1.0 para que todas las oportunidades sean comparables en estructura, lenguaje de decision, score, matriz esfuerzo/ingreso, evidencia y recomendacion final.
+Cada evaluacion formal debe generarse copiando `docs/evaluaciones/TEMPLATE.md` y reemplazando sus campos.
+
+No debe alterarse el orden, nombre ni presencia de las secciones del template. Solo se permite ajustar el contenido interno de cada seccion segun la oportunidad evaluada.
+
+Ese formato queda congelado como v1.0 para que todas las oportunidades sean comparables en estructura, lenguaje de decision, score, matriz esfuerzo/ingreso, evidencia y recomendacion final.
 
 La intencion es que este contrato pueda convertirse mas adelante en:
 
