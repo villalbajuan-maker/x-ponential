@@ -33,6 +33,19 @@ Toda oportunidad que aspire a recibir recursos relevantes del equipo debe pasar 
 3. Matriz esfuerzo vs ingreso.
 4. Decision y siguiente puerta de revision.
 
+### Tabla resumida de decision
+
+Cada evaluacion debe abrir con una tabla ejecutiva que consolide los cuatro pasos sin reemplazar el detalle que los sustenta.
+
+| Caracteristica | Resultado resumido |
+| --- | --- |
+| Filtros no negociables | Valor consolidado de 1 a 5 y lectura. |
+| Score ponderado | Score total sobre 100, nivel discretizado de 1 a 5 y lectura. |
+| Matriz esfuerzo vs ingreso | Esfuerzo, cercania a ingreso y lectura operativa. |
+| Decision y siguiente puerta | Decision final, proximo entregable y fecha de revision. |
+
+La tabla es una vista ejecutiva. Toda calificacion debe conservar su justificacion, evidencia y condiciones en las secciones posteriores.
+
 ## 1. Filtros no negociables
 
 Antes de puntuar, la oportunidad debe pasar estos filtros.
@@ -55,6 +68,20 @@ Resultado posible:
 - **Pasa**: puede entrar al score.
 - **Pasa condicionado**: puede entrar al score, pero con restricciones explicitas.
 - **No pasa**: se descarta, se pausa o se reformula antes de evaluar.
+
+### Escala resumida de no negociables
+
+Cada filtro recibe un valor de 1 a 5 para facilitar la lectura ejecutiva.
+
+| Valor | Estado equivalente | Interpretacion |
+| ---: | --- | --- |
+| 1 | No pasa | Existe un bloqueo grave. La oportunidad se descarta, se pausa o se reformula antes de continuar. |
+| 2 | Puede pasar condicionalmente | Aun no puede avanzar. Primero debe resolver condiciones criticas identificadas. |
+| 3 | Pasa condicionalmente; requiere validacion | Puede avanzar solo a una validacion controlada, con alcance y exposicion limitados. |
+| 4 | Pasa condicionalmente | Puede avanzar con restricciones, controles y responsables explicitos. |
+| 5 | Pasa absolutamente | No se identifican condiciones materiales pendientes en este filtro. |
+
+El valor consolidado de no negociables es el menor valor asignado entre todos los filtros. Un promedio no puede compensar un bloqueo grave.
 
 ## 2. Score ponderado de oportunidad
 
@@ -108,6 +135,18 @@ El puntaje total es la suma de todos los puntajes ponderados.
 | 55 - 69 | Mantener como semilla o pedir ajustes. |
 | 40 - 54 | Pausar hasta nueva evidencia. |
 | < 40 | Descartar por ahora. |
+
+### Discretizacion ejecutiva del score
+
+Para la tabla resumida, el score total se convierte a una escala continua de 1 a 5. Esta discretizacion facilita la comparacion; no reemplaza el score sobre 100 ni sus rangos de decision.
+
+| Nivel | Score total |
+| ---: | ---: |
+| 1 | 0 a menos de 20 |
+| 2 | 20 a menos de 40 |
+| 3 | 40 a menos de 60 |
+| 4 | 60 a menos de 80 |
+| 5 | 80 a 100 |
 
 ## 3. Matriz esfuerzo vs ingreso
 
