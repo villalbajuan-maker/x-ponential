@@ -34,6 +34,7 @@ Durante los proximos ciclos, el equipo esta concentrado en:
 - [Equipo y roles vivos](docs/EQUIPO.md)
 - [Criterios de oportunidad](docs/CRITERIOS-DE-OPORTUNIDAD.md)
 - [Score de oportunidades](docs/SCORE-DE-OPORTUNIDADES.md)
+- [Evaluacion Elena](docs/evaluaciones/2026-07-22-elena-score.md)
 - [Acuerdos operativos](docs/ACUERDOS.md)
 
 ## Issues activos
