@@ -14,6 +14,19 @@ Evaluacion v1 aplicada con el [Score de oportunidades X-ponential](../SCORE-DE-O
 | Issue | #14 |
 | Etapa | Validacion formal |
 
+## Tabla resumida de decision
+
+| Caracteristica | Resultado | Valor / lectura |
+| --- | --- | --- |
+| Filtros no negociables | Valor consolidado: **3** | Pasa condicionalmente; requiere validacion |
+| Score ponderado | **53.88 / 100** | Nivel discretizado: **3** |
+| Matriz esfuerzo vs ingreso | Esfuerzo: **5**; cercania a ingreso: **2** | Validar antes de construir |
+| Decision y siguiente puerta | Decision final: **aprobar validacion formal condicionada** | Proximo entregable: **Plan de validacion Elena V1**; fecha de revision: **2026-08-05** |
+
+Discretizacion del score: **1 = 0 a < 20; 2 = 20 a < 40; 3 = 40 a < 60; 4 = 60 a < 80; 5 = 80 a 100**.
+
+El valor consolidado de no negociables corresponde al menor valor asignado entre todos los filtros.
+
 ## Lectura ejecutiva
 
 Elena es una propuesta de continuidad entre sesiones para practicas y organizaciones que acompanan procesos terapeuticos. La organizacion gobierna el metodo y los contenidos; el profesional define el plan, revisa senales y conserva la decision clinica; el paciente interactua dentro de ChatGPT para retomar actividades, registrar avances y expresar dificultades.
@@ -24,18 +37,22 @@ La decision razonable es avanzar con validacion formal condicionada. Elena no de
 
 ## Filtros no negociables
 
-| Filtro | Estado | Justificacion |
-| --- | --- | --- |
-| Integridad | Condicionado | La propuesta es viable solo si conserva limites explicitos: Elena no diagnostica, no prescribe, no reemplaza al profesional y no opera en crisis. |
-| Reputacion | Condicionado | El riesgo reputacional seria alto si se comunica como terapeuta autonomo o capacidad clinica lista. Debe sostenerse como continuidad supervisada. |
-| Salud y vida sostenible | Pasa | La validacion puede hacerse por etapas, con entrevistas, simulaciones y definicion de alcance antes de exigir construccion pesada. |
-| Fe y conciencia | Pasa | La oportunidad puede sostenerse si protege la dignidad del paciente, el criterio profesional y la responsabilidad de la organizacion. |
-| Independencia responsable | Condicionado | Deben evitarse dependencias de clientes, canales o plataformas que obliguen a prometer mas de lo que el equipo puede gobernar. |
-| Excelencia tecnica | Condicionado | No exige producto completo para validar, pero antes de pacientes reales requiere calidad seria en identidad, permisos, datos, trazabilidad y seguridad. |
-| Riesgo legal / regulatorio | Condicionado | Hay datos sensibles y contexto de salud mental. La validacion debe incluir privacidad, consentimiento, autenticacion, retencion, auditoria y rutas humanas. |
-| Promesa responsable | Condicionado | La promesa es defendible solo si se limita a continuidad, registro, preparacion de sesion y supervision profesional. |
+| Filtro | Valor | Estado equivalente | Justificacion |
+| --- | ---: | --- | --- |
+| Integridad | 3 | Pasa condicionalmente; requiere validacion | La propuesta es viable solo si conserva limites explicitos: Elena no diagnostica, no prescribe, no reemplaza al profesional y no opera en crisis. |
+| Reputacion | 3 | Pasa condicionalmente; requiere validacion | El riesgo reputacional seria alto si se comunica como terapeuta autonomo o capacidad clinica lista. Debe sostenerse como continuidad supervisada. |
+| Salud y vida sostenible | 4 | Pasa condicionalmente | La validacion puede hacerse por etapas, con entrevistas, simulaciones y definicion de alcance antes de exigir construccion pesada. |
+| Fe y conciencia | 4 | Pasa condicionalmente | La oportunidad puede sostenerse si protege la dignidad del paciente, el criterio profesional y la responsabilidad de la organizacion. |
+| Independencia responsable | 3 | Pasa condicionalmente; requiere validacion | Deben evitarse dependencias de clientes, canales o plataformas que obliguen a prometer mas de lo que el equipo puede gobernar. |
+| Excelencia tecnica | 3 | Pasa condicionalmente; requiere validacion | No exige producto completo para validar, pero antes de pacientes reales requiere calidad seria en identidad, permisos, datos, trazabilidad y seguridad. |
+| Riesgo legal / regulatorio | 3 | Pasa condicionalmente; requiere validacion | Hay datos sensibles y contexto de salud mental. La validacion debe incluir privacidad, consentimiento, autenticacion, retencion, auditoria y rutas humanas. |
+| Promesa responsable | 3 | Pasa condicionalmente; requiere validacion | La promesa es defendible solo si se limita a continuidad, registro, preparacion de sesion y supervision profesional. |
 
-Resultado: **pasa condicionado**.
+Escala: **1 no pasa; 2 puede pasar condicionalmente; 3 pasa condicionalmente y requiere validacion; 4 pasa condicionalmente; 5 pasa absolutamente**.
+
+Valor consolidado: **3** (usar el menor valor de los filtros).
+
+Resultado: **pasa para validacion controlada**.
 
 ## Score ponderado
 
@@ -55,6 +72,10 @@ Escala Fibonacci: 0, 1, 2, 3, 5, 8.
 | Aprendizaje estrategico aunque no escale | 3 % | 8 | 3.00 | Deja aprendizaje relevante en Apps SDK, MCP, salud mental, pilotos gobernados, privacidad y productos de continuidad. |
 
 **Score total: 53.88 / 100**
+
+**Nivel discretizado: 3**.
+
+Rangos: **1 = 0 a < 20; 2 = 20 a < 40; 3 = 40 a < 60; 4 = 60 a < 80; 5 = 80 a 100**.
 
 Decision sugerida por score: **pausar hasta nueva evidencia**.
 
