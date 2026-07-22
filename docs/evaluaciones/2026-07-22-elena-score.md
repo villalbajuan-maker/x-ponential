@@ -2,7 +2,7 @@
 
 ## Estado
 
-Entregable oficial v1.0 aplicado con el [Score de oportunidades X-ponential](../SCORE-DE-OPORTUNIDADES.md) y el formato congelado en la [plantilla de evaluacion](TEMPLATE.md).
+Evaluacion v1 aplicada con el [Score de oportunidades X-ponential](../SCORE-DE-OPORTUNIDADES.md).
 
 ## Oportunidad
 
@@ -16,26 +16,24 @@ Entregable oficial v1.0 aplicado con el [Score de oportunidades X-ponential](../
 
 ## Lectura ejecutiva
 
-Elena es una oportunidad con alto potencial estrategico y buen encaje con el ADN de X-ponential, pero todavia no debe tratarse como producto listo para construccion completa ni como piloto clinico abierto.
+Elena es una propuesta de continuidad entre sesiones para practicas y organizaciones que acompanan procesos terapeuticos. La organizacion gobierna el metodo y los contenidos; el profesional define el plan, revisa senales y conserva la decision clinica; el paciente interactua dentro de ChatGPT para retomar actividades, registrar avances y expresar dificultades.
 
-La decision razonable es aprobarla como segundo MVP de validacion formal, con alcance privado, controlado y condicionado a evidencia externa, seguridad, privacidad, supervision humana y claridad comercial.
+La oportunidad merece atencion porque combina un problema humano y operativo claro, una narrativa diferenciable, un repositorio propio con contexto consolidado, sitio publico desplegado y una ruta de validacion posible antes de construir producto completo.
 
-Elena no se aprueba por tener un sitio publico bien presentado. Se aprueba para validacion porque combina un problema relevante, una narrativa diferenciable, potencial de activo, aprendizaje estrategico y posibilidad de ensayar antes de invertir de forma grande.
-
-La evaluacion incorpora como fuente principal el repositorio relacionado `villalbajuan-maker/elena-project`, disponible localmente en `/Users/juanvillalba/Documents/ElenaOS` y sincronizado con `origin/main`.
+La decision razonable es avanzar con validacion formal condicionada. Elena no debe avanzar todavia como construccion completa, piloto clinico abierto ni publicacion publica en ChatGPT. El limite principal es mantener el alcance como continuidad supervisada, no como terapeuta, diagnostico, prescripcion, sistema autonomo de intervencion ni atencion de crisis.
 
 ## Filtros no negociables
 
 | Filtro | Estado | Justificacion |
 | --- | --- | --- |
-| Integridad | Pasa condicionado | La propuesta debe mantener limites claros: Elena no diagnostica, no prescribe, no reemplaza al profesional y no opera en crisis. |
-| Reputacion | Pasa condicionado | El riesgo reputacional es alto si se comunica como terapeuta autonomo o producto clinico listo. Debe presentarse como continuidad supervisada. |
-| Salud y vida sostenible | Pasa | La validacion puede hacerse por etapas sin exigir desgaste impropio del equipo. |
-| Fe y conciencia | Pasa | La oportunidad es coherente si protege la dignidad del paciente y el criterio profesional. |
-| Independencia responsable | Pasa condicionado | Deben evitarse dependencias con clientes o canales que obliguen a prometer mas de lo que se puede gobernar. |
-| Excelencia tecnica | Pasa condicionado | No requiere producto completo para validar, pero si exige calidad seria antes de tocar datos sensibles o pacientes reales. |
-| Riesgo legal / regulatorio | Pasa condicionado | Hay datos sensibles y contexto de salud mental. La validacion debe incluir privacidad, consentimiento, autenticacion, retencion, auditoria y rutas humanas. |
-| Promesa responsable | Pasa condicionado | La promesa es defendible solo si se limita a continuidad, registro, preparacion y supervision profesional. |
+| Integridad | Condicionado | La propuesta es viable solo si conserva limites explicitos: Elena no diagnostica, no prescribe, no reemplaza al profesional y no opera en crisis. |
+| Reputacion | Condicionado | El riesgo reputacional seria alto si se comunica como terapeuta autonomo o capacidad clinica lista. Debe sostenerse como continuidad supervisada. |
+| Salud y vida sostenible | Pasa | La validacion puede hacerse por etapas, con entrevistas, simulaciones y definicion de alcance antes de exigir construccion pesada. |
+| Fe y conciencia | Pasa | La oportunidad puede sostenerse si protege la dignidad del paciente, el criterio profesional y la responsabilidad de la organizacion. |
+| Independencia responsable | Condicionado | Deben evitarse dependencias de clientes, canales o plataformas que obliguen a prometer mas de lo que el equipo puede gobernar. |
+| Excelencia tecnica | Condicionado | No exige producto completo para validar, pero antes de pacientes reales requiere calidad seria en identidad, permisos, datos, trazabilidad y seguridad. |
+| Riesgo legal / regulatorio | Condicionado | Hay datos sensibles y contexto de salud mental. La validacion debe incluir privacidad, consentimiento, autenticacion, retencion, auditoria y rutas humanas. |
+| Promesa responsable | Condicionado | La promesa es defendible solo si se limita a continuidad, registro, preparacion de sesion y supervision profesional. |
 
 Resultado: **pasa condicionado**.
 
@@ -45,16 +43,16 @@ Escala Fibonacci: 0, 1, 2, 3, 5, 8.
 
 | Criterio | Peso | Valor Fibonacci | Puntaje | Justificacion |
 | --- | ---: | ---: | ---: | --- |
-| Problema real y dolor relevante | 15 % | 5 | 9.38 | El dolor entre sesiones es claro: actividades, avances, dificultades y materiales se fragmentan y se pierde continuidad. |
-| Cliente, usuario o beneficiario claro | 10 % | 5 | 6.25 | El ICP inicial esta bien perfilado: practicas psicologicas ambulatorias pequenas o medianas, profesionales y pacientes adultos. |
-| Evidencia disponible | 12 % | 3 | 4.50 | Hay repo propio, sitio, dossier, narrativa, estado actual documentado y decision provisional sobre ChatGPT. Falta evidencia externa con practicas reales. |
-| Potencial de caja o monetizacion | 12 % | 3 | 4.50 | Existe ruta B2B/B2B2C plausible, pero falta disposicion real de pago y comprador validado. |
-| Potencial de activo escalable | 12 % | 5 | 7.50 | Puede convertirse en producto, protocolo, IP, metodologia y plataforma de continuidad terapeutica gobernada. |
-| Velocidad de validacion | 10 % | 5 | 6.25 | El repo ya separa contexto, negocio, producto, piloto, seguridad y arquitectura, lo que permite preparar entrevistas, simulaciones y piloto privado sin construir completo. |
+| Problema real y dolor relevante | 15 % | 5 | 9.38 | El dolor entre sesiones esta definido: actividades, materiales, avances y dificultades se fragmentan y reducen continuidad. |
+| Cliente, usuario o beneficiario claro | 10 % | 5 | 6.25 | El primer ICP esta identificado: practicas psicologicas ambulatorias pequenas o medianas, profesionales y pacientes adultos. |
+| Evidencia disponible | 12 % | 3 | 4.50 | Hay repo propio, sitio publico, dossier, estado actual, narrativa, materiales y decision provisional sobre ChatGPT. Falta evidencia externa con practicas reales. |
+| Potencial de caja o monetizacion | 12 % | 3 | 4.50 | Existe una ruta B2B/B2B2C plausible, pero todavia falta validar comprador, presupuesto, urgencia y disposicion de pago. |
+| Potencial de activo escalable | 12 % | 5 | 7.50 | Puede convertirse en producto, metodologia, protocolo, IP y plataforma de continuidad terapeutica gobernada. |
+| Velocidad de validacion | 10 % | 5 | 6.25 | Puede validarse con entrevistas, simulaciones, concierge, prototipo privado y cohortes pequenas antes de construir completo. |
 | Encaje con capacidades del equipo | 10 % | 5 | 6.25 | Activa producto, IA, software, arquitectura, go-to-market, criterio de riesgo y construccion de activos. |
-| Riesgo tecnico, legal, reputacional y operativo | 10 % | 2 | 2.50 | El riesgo es alto por datos sensibles, salud mental, privacidad, autenticacion, seguridad y percepcion de uso. |
-| Coherencia con ADN y principios | 6 % | 5 | 3.75 | Encaja con valor antes que extraccion si se mantiene supervision humana, prudencia y calidad. |
-| Aprendizaje estrategico aunque no escale | 3 % | 8 | 3.00 | Deja aprendizaje valioso en Apps SDK, MCP, salud mental, pilotos gobernados, privacidad y productos de continuidad. |
+| Riesgo tecnico, legal, reputacional y operativo | 10 % | 2 | 2.50 | El riesgo es alto por salud mental, datos sensibles, privacidad, autenticacion, seguridad, limites clinicos y percepcion de uso. |
+| Coherencia con ADN y principios | 6 % | 5 | 3.75 | Encaja con valor antes que extraccion si se mantiene supervision humana, prudencia, seguridad y calidad tecnica. |
+| Aprendizaje estrategico aunque no escale | 3 % | 8 | 3.00 | Deja aprendizaje relevante en Apps SDK, MCP, salud mental, pilotos gobernados, privacidad y productos de continuidad. |
 
 **Score total: 53.88 / 100**
 
@@ -64,11 +62,13 @@ Decision final propuesta: **aprobar validacion formal condicionada**.
 
 ## Interpretacion del score
 
-El score no castiga la calidad de la idea. Lo que revela es que Elena todavia no tiene suficiente evidencia externa para competir por recursos de construccion completa.
+El puntaje muestra que Elena tiene suficiente sustento para conversacion seria y validacion formal, pero no suficiente para comprometer construccion completa ni operar con pacientes reales.
 
-La oportunidad tiene buen problema, buen encaje estrategico y alto potencial de activo. Sus puntos debiles estan en evidencia de mercado, cercania a ingreso y riesgo tecnico/legal.
+La oportunidad ya confirma un problema bien formulado, actores identificables, buen encaje con capacidades del equipo, potencial de activo y alto aprendizaje estrategico. Tambien confirma que existe material suficiente para iniciar una validacion ordenada: repositorio propio, sitio publico, dossier, estado actual, arquitectura de contexto y decision provisional sobre ChatGPT como interfaz del paciente.
 
-Por eso la decision correcta no es detener. Tampoco es construir completo. La decision correcta es pausar la inversion de construccion y abrir una validacion formal con puerta de decision posterior.
+Lo que todavia no demuestra es traccion comercial, disposicion de pago, adopcion por profesionales, aceptacion por pacientes, validacion operativa, seguridad implementada ni producto funcional completo.
+
+La decision final difiere de la sugerencia automatica del rango porque el score no decide solo: ordena el criterio. Bajo el contrato vigente, el resultado no justifica construccion pesada, pero si justifica una validacion formal acotada para producir la evidencia que falta.
 
 ## Matriz esfuerzo vs ingreso
 
@@ -78,25 +78,27 @@ Escala: 1 muy bajo, 2 bajo, 3 medio, 5 alto, 8 muy alto.
 
 | Factor | Peso | Valor | Justificacion |
 | --- | ---: | ---: | --- |
-| Madurez de producto | 25 % | 3 | Hay propuesta, repo propio, sitio, dossier, estado actual y arquitectura de contexto; faltan definiciones completas de producto, piloto, seguridad y negocio. |
+| Madurez de producto | 25 % | 3 | Hay propuesta, repo propio, sitio, dossier, estado actual y arquitectura de contexto; faltan definiciones operativas completas de negocio, producto, piloto y seguridad. |
 | Codigo existente | 25 % | 5 | Existe base de sitio, formulario, contacto, notificaciones, autorespuesta, agenda y materiales; no se evidencia MCP funcional, App SDK operativo, auth, datos, auditoria ni portal profesional. |
-| Complejidad tecnica | 20 % | 5 | Requiere IA, reglas, resumenes, permisos, experiencia profesional/paciente, seguridad y trazabilidad. |
-| Riesgo operativo / legal | 15 % | 8 | Salud mental y datos sensibles obligan a controles desde el inicio. |
-| Dependencia del equipo | 15 % | 5 | Requiere producto, tecnico, legal/privacidad, UX, QA y posible asesor experto en salud mental. |
+| Complejidad tecnica | 20 % | 5 | Requiere IA, reglas, resumenes, permisos, experiencia profesional/paciente, seguridad, trazabilidad y posible separacion de superficies. |
+| Riesgo operativo / legal | 15 % | 8 | Salud mental y datos sensibles exigen controles desde el inicio: consentimiento, privacidad, autenticacion, retencion, auditoria y rutas humanas. |
+| Dependencia del equipo | 15 % | 5 | Requiere producto, arquitectura, desarrollo, seguridad, QA, legal/privacidad y asesoria funcional o clinica. |
 
 Esfuerzo resultante: **5 - alto**.
 
 ### Cercania a ingreso
 
-Valor: **2 - segmento posible, interes supuesto**.
+Escala: 0 sin ruta clara, 1 idea monetizable, 2 segmento posible, 3 interes real, 5 piloto vendible, 8 ingreso activo.
 
-Justificacion: existe una ruta comercial plausible hacia practicas psicologicas y organizaciones de salud mental, pero todavia falta validar comprador, disposicion de pago, presupuesto, urgencia y condiciones de adopcion.
+Valor: **2 - segmento posible**.
+
+Justificacion: existe una ruta comercial plausible hacia practicas psicologicas y organizaciones de salud mental, pero aun falta validar comprador, presupuesto, urgencia, disposicion de pago y condiciones reales de adopcion.
 
 ### Lectura
 
 **Validar antes de construir.**
 
-Elena puede avanzar, pero debe hacerlo como MVP de validacion formal, no como frente de desarrollo pesado. La prioridad inmediata es producir evidencia comercial, operativa y de riesgo antes de asignar equipo tecnico completo.
+La consecuencia operativa es avanzar con validacion formal, no con desarrollo completo. El equipo debe producir evidencia de mercado, uso, seguridad, alcance y disposicion de pago antes de asignar capacidad tecnica pesada.
 
 ## Evidencia
 
@@ -104,24 +106,22 @@ Elena puede avanzar, pero debe hacerlo como MVP de validacion formal, no como fr
 
 - Existe sitio publico en `https://elena.vectoros.co`.
 - Existe repositorio relacionado `villalbajuan-maker/elena-project`, disponible localmente en `/Users/juanvillalba/Documents/ElenaOS` y sincronizado con `origin/main`.
-- Existe dossier ejecutivo y PDF de revision.
-- El repo de Elena declara como completados: sitio publico, landing desplegada, captura de leads, formulario con notificacion interna, autorespuesta, agenda, WhatsApp, dossier ejecutivo, demostracion visual en ChatGPT y representacion visual de bandeja profesional.
-- El alcance V1 propuesto limita Elena a continuidad entre sesiones, supervision profesional y piloto privado.
-- El repo de Elena declara como no implementados: servidor MCP, autenticacion, modelo de organizaciones/pacientes/planes/sesiones, motor de actividades, bandeja profesional, gobierno de conocimiento, eventos, trazabilidad clinica, politica de escalamiento, piloto con metricas reales y app instalada en ChatGPT.
-- Existe una decision aceptada provisionalmente: ChatGPT sera la interfaz del paciente, respaldada por herramientas MCP, mientras superficies profesional y organizacional pueden vivir fuera de ChatGPT.
+- El repo de Elena declara completados: sitio publico, landing desplegada, captura de leads, formulario con notificacion interna, autorespuesta, agenda, WhatsApp, dossier ejecutivo, demostracion visual en ChatGPT y representacion visual de bandeja profesional.
+- El repo de Elena declara no implementados: servidor MCP, autenticacion, modelo de organizaciones/pacientes/planes/sesiones, motor de actividades, bandeja profesional, gobierno de conocimiento, eventos, trazabilidad clinica, politica de escalamiento, piloto con metricas reales y app instalada en ChatGPT.
+- Existe decision aceptada provisionalmente: ChatGPT sera la interfaz del paciente, respaldada por herramientas MCP, mientras las superficies profesional y organizacional pueden vivir fuera de ChatGPT.
+- El alcance propuesto limita Elena a continuidad entre sesiones, supervision profesional y piloto privado.
 
 ### Inferencias
 
 - El dolor entre sesiones es razonable y potencialmente relevante para practicas con metodologia estructurada.
-- El canal ChatGPT puede facilitar adopcion por familiaridad conversacional, pero tambien puede generar riesgos de percepcion clinica.
-- La separacion propuesta entre ChatGPT como interfaz y Elena como infraestructura propia es correcta para no depender del historial conversacional como fuente de verdad.
+- La separacion entre ChatGPT como interfaz y Elena como infraestructura propia es correcta para no depender del historial conversacional como fuente de verdad.
 - La oportunidad tiene potencial de activo si se gobierna como producto de continuidad supervisada.
 - El principal desbloqueo no es narrativo ni de landing comercial, sino de validacion externa, seguridad, privacidad, arquitectura operativa y definicion del piloto.
 
 ### Hipotesis
 
 - Las practicas pagarian por mayor continuidad, visibilidad y preparacion entre sesiones.
-- Los profesionales revisarian los resumenes antes de sesion y los encontrarian utiles.
+- Los profesionales revisarian resumenes antes de sesion y los encontrarian utiles.
 - Los pacientes adultos aceptarian interactuar con Elena dentro de limites claros.
 - La experiencia en ChatGPT seria canal adecuado o, al menos, canal aceptable para un piloto privado.
 - Los riesgos pueden controlarse con consentimiento, limites, revision humana, auditoria y rutas de escalamiento.
@@ -143,7 +143,7 @@ Elena puede avanzar, pero debe hacerlo como MVP de validacion formal, no como fr
 - Existe disposicion concreta a piloto, pago, carta de intencion o agenda de prueba.
 - El alcance se mantiene como continuidad supervisada, no intervencion autonoma.
 - El equipo define controles minimos de privacidad, consentimiento, autenticacion, auditoria y rutas humanas.
-- El repo de Elena consolida documentos operativos completos para producto, piloto, seguridad clinica, privacidad, arquitectura y modelo comercial.
+- El repo de Elena consolida documentos operativos completos para negocio, producto, piloto, seguridad clinica, privacidad, arquitectura y modelo comercial.
 - El esfuerzo tecnico de piloto privado resulta proporcional al aprendizaje y al potencial comercial.
 
 ### Criterios para detener o replantear
@@ -153,13 +153,13 @@ Elena puede avanzar, pero debe hacerlo como MVP de validacion formal, no como fr
 - ChatGPT genera rechazo o confusion clinica dificil de controlar.
 - El paciente interpreta Elena como terapeuta, diagnostico o sustituto profesional.
 - Los controles de privacidad, seguridad y supervision vuelven inviable el piloto V1.
-- La oportunidad exige una inversion tecnica alta antes de producir evidencia comercial suficiente.
-- El repo de Elena no logra cerrar las decisiones abiertas de identidad, datos, herramientas MCP, auditoria, retencion, bandeja profesional y limites de informacion enviada a ChatGPT.
+- La oportunidad exige inversion tecnica alta antes de producir evidencia comercial suficiente.
+- El repo de Elena no logra cerrar decisiones abiertas de identidad, datos, herramientas MCP, auditoria, retencion, bandeja profesional y limites de informacion enviada a ChatGPT.
 
 ## Recomendacion final
 
-Elena debe avanzar como segundo MVP de validacion formal, con una aclaracion central:
+Elena debe avanzar como segundo MVP de validacion formal condicionada.
 
-**la aprobacion es para validar con rigor, no para construir completo.**
+La recomendacion no es construir completo ni publicar una app clinica abierta. El siguiente paso verificable es ejecutar una validacion formal que produzca evidencia externa sobre dolor, comprador, disposicion de pago, canal, alcance, seguridad y viabilidad de piloto privado.
 
-El objetivo inmediato es subir el score desde evidencia inicial hacia evidencia fuerte. Para lograrlo, el siguiente trabajo debe enfocarse en clientes reales, entrevistas, disposicion de pago, protocolo seguro, alcance privado y consolidacion del repo Elena como fuente de verdad operativa.
+La decision debe cambiar solo si aparece nueva evidencia verificable, si se corrige un error material de aplicacion del contrato o si la validacion demuestra que el problema, el comprador, el canal o los controles no sostienen la oportunidad.
