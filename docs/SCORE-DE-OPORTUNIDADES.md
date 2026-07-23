@@ -39,12 +39,29 @@ Cada evaluacion debe abrir con una tabla ejecutiva que consolide los cuatro paso
 
 | Caracteristica | Resultado resumido |
 | --- | --- |
-| Filtros no negociables | Valor consolidado de 1 a 5 y lectura. |
-| Score ponderado | Score total sobre 100, nivel discretizado de 1 a 5 y lectura. |
-| Matriz esfuerzo vs ingreso | Esfuerzo, cercania a ingreso y lectura operativa. |
-| Decision y siguiente puerta | Decision final, proximo entregable y fecha de revision. |
+| Filtros no negociables | Check inicial de rechazo, aceptacion condicionada o aceptacion. No participa en el resultado global. |
+| Score ponderado | Score total sobre 100, nivel discretizado de 1 a 5 y lectura. Peso en el resultado global: 62 %. |
+| Matriz esfuerzo vs ingreso | Esfuerzo, cercania a ingreso y lectura operativa. Peso en el resultado global: 19 %. |
+| Decision y siguiente puerta | Decision final, proximo entregable y fecha de revision. Peso en el resultado global: 19 %. |
 
 La tabla es una vista ejecutiva. Toda calificacion debe conservar su justificacion, evidencia y condiciones en las secciones posteriores.
+
+Los no negociables funcionan como puerta de entrada:
+
+- Si el resultado es **no pasa**, la oportunidad se rechaza, se pausa o se reformula y no se calcula score final.
+- Si el resultado es **pasa condicionado**, la oportunidad puede continuar con las restricciones registradas.
+- Si el resultado es **pasa**, la oportunidad continua al score sin restricciones materiales pendientes.
+
+Cuando la oportunidad supera esta puerta, el resultado global se calcula sobre la escala de 1 a 5:
+
+```text
+Resultado global =
+  (nivel discretizado del score x 62 %) +
+  (matriz esfuerzo vs ingreso x 19 %) +
+  (decision y siguiente puerta x 19 %)
+```
+
+Los no negociables nunca se promedian ni se compensan con los otros componentes.
 
 ## 1. Filtros no negociables
 
@@ -92,16 +109,18 @@ Cada criterio se califica con la escala Fibonacci de madurez definida en este do
 | Criterio | Peso |
 | --- | ---: |
 | Problema real y dolor relevante | 15 % |
-| Cliente, usuario o beneficiario claro | 10 % |
-| Evidencia disponible | 12 % |
-| Potencial de caja o monetizacion | 12 % |
-| Potencial de activo escalable | 12 % |
-| Velocidad de validacion | 10 % |
-| Encaje con capacidades del equipo | 10 % |
-| Riesgo tecnico, legal, reputacional y operativo | 10 % |
-| Coherencia con ADN y principios | 6 % |
-| Aprendizaje estrategico aunque no escale | 3 % |
+| Cliente, usuario o beneficiario claro | 15 % |
+| Evidencia disponible | 9 % |
+| Potencial de caja o monetizacion | 25 % |
+| Potencial de activo escalable | 9 % |
+| Velocidad de validacion | 7 % |
+| Encaje con capacidades del equipo | 7 % |
+| Riesgo tecnico, legal, reputacional y operativo | 7 % |
+| Coherencia con ADN y principios | 4 % |
+| Aprendizaje estrategico aunque no escale | 2 % |
 | **Total** | **100 %** |
+
+Los pesos redistribuidos de los siete criterios restantes se redondean hacia abajo a enteros. Los 5 puntos porcentuales liberados por ese redondeo se suman a potencial de caja o monetizacion, que queda en 25 %. Asi se conserva un total exacto de 100 % sin usar pesos decimales.
 
 ### Escala Fibonacci de madurez
 
@@ -201,6 +220,16 @@ Este eje mide que tan cerca esta la oportunidad de caja real.
 | Esfuerzo medio | Mantener como semilla | Piloto acotado | Priorizar si hay responsable |
 | Esfuerzo alto | Pausar | Validar antes de construir | Avanzar solo con sponsor, cliente o equipo asignado |
 
+### Nivel resumido de la matriz
+
+| Nivel | Lectura operativa |
+| ---: | --- |
+| 1 | Pausar. |
+| 2 | Validar antes de construir. |
+| 3 | Piloto acotado. |
+| 4 | Validar ya o avanzar de forma controlada. |
+| 5 | Prioridad comercial. |
+
 ### Ejemplo de lectura
 
 ```text
@@ -223,6 +252,16 @@ Opciones:
 - Solicitar ajustes.
 - Pausar.
 - Descartar por ahora.
+
+### Nivel resumido de decision y siguiente puerta
+
+| Nivel | Decision equivalente |
+| ---: | --- |
+| 1 | Descartar por ahora. |
+| 2 | Pausar hasta nueva evidencia. |
+| 3 | Mantener como semilla o solicitar ajustes. |
+| 4 | Aprobar validacion formal. |
+| 5 | Priorizar y avanzar con recursos. |
 
 Tambien debe definir:
 
@@ -295,15 +334,15 @@ Issue:
 | Criterio | Peso | Valor Fibonacci | Puntaje | Justificacion |
 | --- | ---: | ---: | ---: | --- |
 | Problema real y dolor relevante | 15 % |  |  |  |
-| Cliente, usuario o beneficiario claro | 10 % |  |  |  |
-| Evidencia disponible | 12 % |  |  |  |
-| Potencial de caja o monetizacion | 12 % |  |  |  |
-| Potencial de activo escalable | 12 % |  |  |  |
-| Velocidad de validacion | 10 % |  |  |  |
-| Encaje con capacidades del equipo | 10 % |  |  |  |
-| Riesgo tecnico, legal, reputacional y operativo | 10 % |  |  |  |
-| Coherencia con ADN y principios | 6 % |  |  |  |
-| Aprendizaje estrategico aunque no escale | 3 % |  |  |  |
+| Cliente, usuario o beneficiario claro | 15 % |  |  |  |
+| Evidencia disponible | 9 % |  |  |  |
+| Potencial de caja o monetizacion | 25 % |  |  |  |
+| Potencial de activo escalable | 9 % |  |  |  |
+| Velocidad de validacion | 7 % |  |  |  |
+| Encaje con capacidades del equipo | 7 % |  |  |  |
+| Riesgo tecnico, legal, reputacional y operativo | 7 % |  |  |  |
+| Coherencia con ADN y principios | 4 % |  |  |  |
+| Aprendizaje estrategico aunque no escale | 2 % |  |  |  |
 
 Score total:
 Decision sugerida:
