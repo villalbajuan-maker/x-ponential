@@ -39,28 +39,29 @@ Cada evaluacion debe abrir con una tabla ejecutiva que consolide los cuatro paso
 
 | Caracteristica | Resultado resumido |
 | --- | --- |
-| Filtros no negociables | Valor consolidado de 1 a 5 y lectura. Peso en el resultado global: 12.67 %. |
+| Filtros no negociables | Check inicial de rechazo, aceptacion condicionada o aceptacion. No participa en el resultado global. |
 | Score ponderado | Score total sobre 100, nivel discretizado de 1 a 5 y lectura. Peso en el resultado global: 62 %. |
-| Matriz esfuerzo vs ingreso | Esfuerzo, cercania a ingreso y lectura operativa. Peso en el resultado global: 12.67 %. |
-| Decision y siguiente puerta | Decision final, proximo entregable y fecha de revision. Peso en el resultado global: 12.66 %. |
+| Matriz esfuerzo vs ingreso | Esfuerzo, cercania a ingreso y lectura operativa. Peso en el resultado global: 19 %. |
+| Decision y siguiente puerta | Decision final, proximo entregable y fecha de revision. Peso en el resultado global: 19 %. |
 
 La tabla es una vista ejecutiva. Toda calificacion debe conservar su justificacion, evidencia y condiciones en las secciones posteriores.
 
-El resultado global se calcula sobre la escala de 1 a 5:
+Los no negociables funcionan como puerta de entrada:
+
+- Si el resultado es **no pasa**, la oportunidad se rechaza, se pausa o se reformula y no se calcula score final.
+- Si el resultado es **pasa condicionado**, la oportunidad puede continuar con las restricciones registradas.
+- Si el resultado es **pasa**, la oportunidad continua al score sin restricciones materiales pendientes.
+
+Cuando la oportunidad supera esta puerta, el resultado global se calcula sobre la escala de 1 a 5:
 
 ```text
-Resultado global preliminar =
-  (no negociables x 12.67 %) +
+Resultado global =
   (nivel discretizado del score x 62 %) +
-  (matriz esfuerzo vs ingreso x 12.67 %) +
-  (decision y siguiente puerta x 12.66 %)
-
-Resultado global final = menor valor entre:
-  - resultado global preliminar, y
-  - valor consolidado de no negociables.
+  (matriz esfuerzo vs ingreso x 19 %) +
+  (decision y siguiente puerta x 19 %)
 ```
 
-El limite por no negociables impide que un buen resultado comercial compense un bloqueo material.
+Los no negociables nunca se promedian ni se compensan con los otros componentes.
 
 ## 1. Filtros no negociables
 

@@ -18,23 +18,26 @@ Evaluacion v1 aplicada con el [Score de oportunidades X-ponential](../SCORE-DE-O
 
 | Caracteristica | Resultado | Valor / lectura |
 | --- | --- | --- |
-| Filtros no negociables | Valor consolidado: **1 / 2 / 3 / 4 / 5** | Peso global: **12.67 %** |
+| Filtros no negociables | **No pasa / Pasa condicionado / Pasa** | Check inicial; sin peso en el resultado global |
 | Score ponderado | **0.00 / 100**; nivel: **1 / 2 / 3 / 4 / 5** | Peso global: **62 %** |
-| Matriz esfuerzo vs ingreso | Nivel resumido: **1 / 2 / 3 / 4 / 5** | Peso global: **12.67 %** |
-| Decision y siguiente puerta | Nivel resumido: **1 / 2 / 3 / 4 / 5** | Peso global: **12.66 %** |
+| Matriz esfuerzo vs ingreso | Nivel resumido: **1 / 2 / 3 / 4 / 5** | Peso global: **19 %** |
+| Decision y siguiente puerta | Nivel resumido: **1 / 2 / 3 / 4 / 5** | Peso global: **19 %** |
 
 Discretizacion del score: **1 = 0 a < 20; 2 = 20 a < 40; 3 = 40 a < 60; 4 = 60 a < 80; 5 = 80 a 100**.
 
-El valor consolidado de no negociables corresponde al menor valor asignado entre todos los filtros.
+El valor consolidado de no negociables corresponde al menor valor asignado entre todos los filtros y funciona exclusivamente como check inicial.
 
-Resultado global preliminar: **0.00 / 5**.
+Resultado del check inicial: **rechazar / continuar condicionado / continuar**.
+
+Si el check inicial permite continuar, calcular:
 
 ```text
-(no negociables x 12.67 %) + (score x 62 %) +
-(matriz x 12.67 %) + (decision x 12.66 %)
+(score x 62 %) + (matriz x 19 %) + (decision x 19 %)
 ```
 
-Resultado global final: **0.00 / 5** (no puede superar el valor consolidado de no negociables).
+Resultado global final: **0.00 / 5**.
+
+Los no negociables no participan en el promedio y no pueden ser compensados por un buen score.
 
 Nivel de matriz: **1 pausar; 2 validar antes de construir; 3 piloto acotado; 4 validar ya o avanzar controladamente; 5 prioridad comercial**.
 
