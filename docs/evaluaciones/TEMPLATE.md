@@ -18,14 +18,27 @@ Evaluacion v1 aplicada con el [Score de oportunidades X-ponential](../SCORE-DE-O
 
 | Caracteristica | Resultado | Valor / lectura |
 | --- | --- | --- |
-| Filtros no negociables | Valor consolidado: **1 / 2 / 3 / 4 / 5** | No pasa / Puede pasar condicionalmente / Pasa condicionalmente; requiere validacion / Pasa condicionalmente / Pasa absolutamente |
-| Score ponderado | **0.00 / 100** | Nivel discretizado: **1 / 2 / 3 / 4 / 5** |
-| Matriz esfuerzo vs ingreso | Esfuerzo: **1 / 2 / 3 / 5 / 8**; cercania a ingreso: **0 / 1 / 2 / 3 / 5 / 8** | Prioridad comercial / Validar ya / Piloto acotado / Validar antes de construir / Pausar |
-| Decision y siguiente puerta | Decision final: **por definir** | Proximo entregable: **por definir**; fecha de revision: **por definir** |
+| Filtros no negociables | Valor consolidado: **1 / 2 / 3 / 4 / 5** | Peso global: **16.67 %** |
+| Score ponderado | **0.00 / 100**; nivel: **1 / 2 / 3 / 4 / 5** | Peso global: **50 %** |
+| Matriz esfuerzo vs ingreso | Nivel resumido: **1 / 2 / 3 / 4 / 5** | Peso global: **16.67 %** |
+| Decision y siguiente puerta | Nivel resumido: **1 / 2 / 3 / 4 / 5** | Peso global: **16.66 %** |
 
 Discretizacion del score: **1 = 0 a < 20; 2 = 20 a < 40; 3 = 40 a < 60; 4 = 60 a < 80; 5 = 80 a 100**.
 
 El valor consolidado de no negociables corresponde al menor valor asignado entre todos los filtros.
+
+Resultado global preliminar: **0.00 / 5**.
+
+```text
+(no negociables x 16.67 %) + (score x 50 %) +
+(matriz x 16.67 %) + (decision x 16.66 %)
+```
+
+Resultado global final: **0.00 / 5** (no puede superar el valor consolidado de no negociables).
+
+Nivel de matriz: **1 pausar; 2 validar antes de construir; 3 piloto acotado; 4 validar ya o avanzar controladamente; 5 prioridad comercial**.
+
+Nivel de decision: **1 descartar; 2 pausar; 3 mantener semilla o solicitar ajustes; 4 aprobar validacion formal; 5 priorizar**.
 
 ## Lectura ejecutiva
 
@@ -64,15 +77,15 @@ Escala Fibonacci: 0, 1, 2, 3, 5, 8.
 | Criterio | Peso | Valor Fibonacci | Puntaje | Justificacion |
 | --- | ---: | ---: | ---: | --- |
 | Problema real y dolor relevante | 15 % |  |  |  |
-| Cliente, usuario o beneficiario claro | 10 % |  |  |  |
-| Evidencia disponible | 12 % |  |  |  |
-| Potencial de caja o monetizacion | 12 % |  |  |  |
-| Potencial de activo escalable | 12 % |  |  |  |
-| Velocidad de validacion | 10 % |  |  |  |
-| Encaje con capacidades del equipo | 10 % |  |  |  |
-| Riesgo tecnico, legal, reputacional y operativo | 10 % |  |  |  |
-| Coherencia con ADN y principios | 6 % |  |  |  |
-| Aprendizaje estrategico aunque no escale | 3 % |  |  |  |
+| Cliente, usuario o beneficiario claro | 15 % |  |  |  |
+| Evidencia disponible | 9.52 % |  |  |  |
+| Potencial de caja o monetizacion | 20 % |  |  |  |
+| Potencial de activo escalable | 9.52 % |  |  |  |
+| Velocidad de validacion | 7.94 % |  |  |  |
+| Encaje con capacidades del equipo | 7.94 % |  |  |  |
+| Riesgo tecnico, legal, reputacional y operativo | 7.94 % |  |  |  |
+| Coherencia con ADN y principios | 4.76 % |  |  |  |
+| Aprendizaje estrategico aunque no escale | 2.38 % |  |  |  |
 
 **Score total: 0.00 / 100**
 
