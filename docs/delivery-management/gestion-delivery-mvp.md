@@ -49,7 +49,7 @@ El ciclo de vida definido tiene 7 etapas. La tabla siguiente aterriza qué contr
 
 ### 3.2 Daily asíncrono (dueño: cada responsable)
 
-- **Cuándo:** todos los días hábiles, **antes de las 9:00 am**.
+- **Cuándo:** todos los días hábiles L-V, **antes de las 9:00 am**.
 - **Canal:** chat del equipo (hilo único por día para mantener trazabilidad).
 - **Objetivo:** dar visibilidad temprana de avance, plan del día y bloqueos sin convocar reunión.
 
