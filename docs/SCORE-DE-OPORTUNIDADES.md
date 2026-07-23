@@ -109,17 +109,17 @@ Cada criterio se califica con la escala Fibonacci de madurez definida en este do
 | --- | ---: |
 | Problema real y dolor relevante | 15 % |
 | Cliente, usuario o beneficiario claro | 15 % |
-| Evidencia disponible | 9.52 % |
-| Potencial de caja o monetizacion | 20 % |
-| Potencial de activo escalable | 9.52 % |
-| Velocidad de validacion | 7.94 % |
-| Encaje con capacidades del equipo | 7.94 % |
-| Riesgo tecnico, legal, reputacional y operativo | 7.94 % |
-| Coherencia con ADN y principios | 4.76 % |
-| Aprendizaje estrategico aunque no escale | 2.38 % |
+| Evidencia disponible | 9 % |
+| Potencial de caja o monetizacion | 25 % |
+| Potencial de activo escalable | 9 % |
+| Velocidad de validacion | 7 % |
+| Encaje con capacidades del equipo | 7 % |
+| Riesgo tecnico, legal, reputacional y operativo | 7 % |
+| Coherencia con ADN y principios | 4 % |
+| Aprendizaje estrategico aunque no escale | 2 % |
 | **Total** | **100 %** |
 
-Los tres criterios principales concentran 50 % del score: problema real (15 %), cliente claro (15 %) y potencial de caja (20 %). Los siete criterios restantes comparten el otro 50 % mediante una reduccion proporcional uniforme de sus pesos anteriores.
+Los pesos redistribuidos de los siete criterios restantes se redondean hacia abajo a enteros. Los 5 puntos porcentuales liberados por ese redondeo se suman a potencial de caja o monetizacion, que queda en 25 %. Asi se conserva un total exacto de 100 % sin usar pesos decimales.
 
 ### Escala Fibonacci de madurez
 
@@ -334,14 +334,14 @@ Issue:
 | --- | ---: | ---: | ---: | --- |
 | Problema real y dolor relevante | 15 % |  |  |  |
 | Cliente, usuario o beneficiario claro | 15 % |  |  |  |
-| Evidencia disponible | 9.52 % |  |  |  |
-| Potencial de caja o monetizacion | 20 % |  |  |  |
-| Potencial de activo escalable | 9.52 % |  |  |  |
-| Velocidad de validacion | 7.94 % |  |  |  |
-| Encaje con capacidades del equipo | 7.94 % |  |  |  |
-| Riesgo tecnico, legal, reputacional y operativo | 7.94 % |  |  |  |
-| Coherencia con ADN y principios | 4.76 % |  |  |  |
-| Aprendizaje estrategico aunque no escale | 2.38 % |  |  |  |
+| Evidencia disponible | 9 % |  |  |  |
+| Potencial de caja o monetizacion | 25 % |  |  |  |
+| Potencial de activo escalable | 9 % |  |  |  |
+| Velocidad de validacion | 7 % |  |  |  |
+| Encaje con capacidades del equipo | 7 % |  |  |  |
+| Riesgo tecnico, legal, reputacional y operativo | 7 % |  |  |  |
+| Coherencia con ADN y principios | 4 % |  |  |  |
+| Aprendizaje estrategico aunque no escale | 2 % |  |  |  |
 
 Score total:
 Decision sugerida:
