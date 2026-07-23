@@ -18,10 +18,10 @@ Evaluacion v1 aplicada con el [Score de oportunidades X-ponential](../SCORE-DE-O
 
 | Caracteristica | Resultado | Valor / lectura |
 | --- | --- | --- |
-| Filtros no negociables | Valor consolidado: **1 / 2 / 3 / 4 / 5** | Peso global: **16.67 %** |
-| Score ponderado | **0.00 / 100**; nivel: **1 / 2 / 3 / 4 / 5** | Peso global: **50 %** |
-| Matriz esfuerzo vs ingreso | Nivel resumido: **1 / 2 / 3 / 4 / 5** | Peso global: **16.67 %** |
-| Decision y siguiente puerta | Nivel resumido: **1 / 2 / 3 / 4 / 5** | Peso global: **16.66 %** |
+| Filtros no negociables | Valor consolidado: **1 / 2 / 3 / 4 / 5** | Peso global: **12.67 %** |
+| Score ponderado | **0.00 / 100**; nivel: **1 / 2 / 3 / 4 / 5** | Peso global: **62 %** |
+| Matriz esfuerzo vs ingreso | Nivel resumido: **1 / 2 / 3 / 4 / 5** | Peso global: **12.67 %** |
+| Decision y siguiente puerta | Nivel resumido: **1 / 2 / 3 / 4 / 5** | Peso global: **12.66 %** |
 
 Discretizacion del score: **1 = 0 a < 20; 2 = 20 a < 40; 3 = 40 a < 60; 4 = 60 a < 80; 5 = 80 a 100**.
 
@@ -30,8 +30,8 @@ El valor consolidado de no negociables corresponde al menor valor asignado entre
 Resultado global preliminar: **0.00 / 5**.
 
 ```text
-(no negociables x 16.67 %) + (score x 50 %) +
-(matriz x 16.67 %) + (decision x 16.66 %)
+(no negociables x 12.67 %) + (score x 62 %) +
+(matriz x 12.67 %) + (decision x 12.66 %)
 ```
 
 Resultado global final: **0.00 / 5** (no puede superar el valor consolidado de no negociables).

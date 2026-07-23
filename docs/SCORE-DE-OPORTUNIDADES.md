@@ -39,10 +39,10 @@ Cada evaluacion debe abrir con una tabla ejecutiva que consolide los cuatro paso
 
 | Caracteristica | Resultado resumido |
 | --- | --- |
-| Filtros no negociables | Valor consolidado de 1 a 5 y lectura. Peso en el resultado global: 16.67 %. |
-| Score ponderado | Score total sobre 100, nivel discretizado de 1 a 5 y lectura. Peso en el resultado global: 50 %. |
-| Matriz esfuerzo vs ingreso | Esfuerzo, cercania a ingreso y lectura operativa. Peso en el resultado global: 16.67 %. |
-| Decision y siguiente puerta | Decision final, proximo entregable y fecha de revision. Peso en el resultado global: 16.66 %. |
+| Filtros no negociables | Valor consolidado de 1 a 5 y lectura. Peso en el resultado global: 12.67 %. |
+| Score ponderado | Score total sobre 100, nivel discretizado de 1 a 5 y lectura. Peso en el resultado global: 62 %. |
+| Matriz esfuerzo vs ingreso | Esfuerzo, cercania a ingreso y lectura operativa. Peso en el resultado global: 12.67 %. |
+| Decision y siguiente puerta | Decision final, proximo entregable y fecha de revision. Peso en el resultado global: 12.66 %. |
 
 La tabla es una vista ejecutiva. Toda calificacion debe conservar su justificacion, evidencia y condiciones en las secciones posteriores.
 
@@ -50,10 +50,10 @@ El resultado global se calcula sobre la escala de 1 a 5:
 
 ```text
 Resultado global preliminar =
-  (no negociables x 16.67 %) +
-  (nivel discretizado del score x 50 %) +
-  (matriz esfuerzo vs ingreso x 16.67 %) +
-  (decision y siguiente puerta x 16.66 %)
+  (no negociables x 12.67 %) +
+  (nivel discretizado del score x 62 %) +
+  (matriz esfuerzo vs ingreso x 12.67 %) +
+  (decision y siguiente puerta x 12.66 %)
 
 Resultado global final = menor valor entre:
   - resultado global preliminar, y
