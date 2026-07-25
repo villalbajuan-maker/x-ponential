@@ -2,7 +2,7 @@
 
 ## Estado
 
-Borrador para kickoff
+Antecedente historico. Semillas retiradas del portafolio activo.
 
 ## Autor(es)
 
@@ -11,6 +11,21 @@ Juan
 ## Fecha
 
 2026-06-22
+
+## Retiro del portafolio activo
+
+El 2026-07-25 se retiran del portafolio activo de X-ponential las siguientes semillas propuestas por Juan:
+
+| Semilla | Estado actual dentro de X-ponential |
+| --- | --- |
+| Nucleos | Retirada del portafolio activo. |
+| Myco.Legal | Retirada del portafolio activo. |
+| LexControl | Retirada del portafolio activo. |
+| LexVault | Retirada del portafolio activo como capacidad asociada a Myco.Legal / LexControl. |
+
+Estas semillas quedan como antecedente historico de la conversacion inicial. No hacen parte de las oportunidades actualmente evaluables, priorizadas o candidatas a recibir recursos del equipo X-ponential.
+
+Este retiro no implica que los proyectos dejen de existir fuera de X-ponential. Implica solamente que ya no se presentan como oportunidades activas del equipo dentro de este repositorio.
 
 ## Resumen
 
