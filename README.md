@@ -22,7 +22,7 @@ Durante los proximos ciclos, el equipo esta concentrado en:
 | --- | --- | --- | --- |
 | Business Bridge - experimento priorizado | Equipo | En validacion | Criterio de avance sobre piloto |
 | Business Bridge - MVP tecnico | Alejo, David, Ivan, Camilo | En revision | MVP, arquitectura, specs, criterios tecnicos |
-| Business Bridge - producto, mercado y go-to-market | Juan | En desarrollo | Documento de producto, mercado y empaquetamiento |
+| Business Bridge - producto, mercado y go-to-market | Juan | Suspendido temporalmente | Pendiente definicion del equipo sobre continuidad de Business Bridge |
 | Sistema de trabajo del equipo | Equipo | En definicion | Roles, foco 90 dias, metodo, decisiones y metricas |
 
 ## Entregables vivos
@@ -44,7 +44,7 @@ Durante los proximos ciclos, el equipo esta concentrado en:
 
 ## Proximos pasos
 
-1. Completar el frente de producto, mercado y go-to-market de Business Bridge por tareas.
+1. Definir si Business Bridge continua, se pausa, se reformula o se cierra como aprendizaje.
 2. Revisar el MVP tecnico con criterios de arquitectura, specs, datos, IA, QA y despliegue.
 3. Definir foco de 90 dias y disponibilidad real del equipo.
 4. Convertir roles sugeridos en responsabilidades, autoridad, metricas y entregables.
